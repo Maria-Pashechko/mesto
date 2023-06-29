@@ -1,4 +1,6 @@
 .header {
+  border: 1px solid salmon;
+  min-height: 74px;
   display: flex;
   justify-content: start;
   align-content: space-between;

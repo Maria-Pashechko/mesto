@@ -1,0 +1,9 @@
+.page {
+  background-color: #000;
+  max-width: 1280px;
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  margin: 0;
+  padding: 0 200px;
+}
