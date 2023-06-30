@@ -1,5 +1,6 @@
 .profile {
-  border: 1px solid lightgreen;
   min-height: 120px;
   margin: 40px 0 0;
+  display: flex;
+  justify-content: space-between;
 }

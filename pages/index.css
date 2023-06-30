@@ -9,6 +9,15 @@
 @import url(../blocks/header/__line/header__line.css);
 
 @import url(../blocks/profile/profile.css);
+@import url(../blocks/profile/__info/profile__info.css);
+@import url(../blocks/profile/__avatar/profile__avatar.css);
+@import url(../blocks/button/button.css);
+@import url(../blocks/profile/__edit-btn/profile__edit-btn.css);
+@import url(../blocks/input/input.css);
+@import url(../blocks/input/__name/input__name.css);
+@import url(../blocks/input/__profession/input__profession.css);
+@import url(../blocks/profile/__add-btn/profile__add-btn.css);
+
 
 @import url(../blocks/elements/elements.css);
 
