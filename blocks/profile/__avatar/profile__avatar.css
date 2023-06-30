@@ -1,10 +1,17 @@
 .profile__avatar {
-  display: block;
   max-width: 100%;
+  width: 120px;
+  height: 120px;
   background-image: url(../../../images/avatar.jpg);
   background-size: cover;
   background-position: center;
   border-radius: 120px;
   grid-row: span 2;
   grid-column: 1;
+}
+
+@media screen and (max-width: 767px) {
+  .profile__avatar {
+    align-self: center;
+  }
 }

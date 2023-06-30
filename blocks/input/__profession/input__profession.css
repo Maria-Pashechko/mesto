@@ -1,11 +1,23 @@
 .input__profession {
-max-width: 336px;
+max-width: 330px;
 font-size: 18px;
 font-family: Inter;
 font-style: normal;
 font-weight: 400;
 line-height: normal;
 grid-row: 2;
-grid-column: 2;
+grid-column: span 2;
 align-self: start;
+}
+
+@media screen and (max-width: 767px) {
+  .input__profession {
+    max-width: 282px;
+    font-size: 14px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+  }
 }

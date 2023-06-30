@@ -2,9 +2,21 @@
   width: 100%;
   width: 150px;
   height: 50px;
+  padding: 0;
   background-image: url(../../../images/Add_button.svg);
   background-repeat: no-repeat;
   background-size: contain;
   align-self: center;
   cursor: pointer;
+}
+
+@media screen and (max-width: 767px) {
+  .profile__add-btn {
+    border: 2px solid #fff;
+    width: 282px;
+    height: 50px;
+    background-image: url(../../../images/Vector.svg);
+    background-position: center;
+    background-size: auto;
+  }
 }

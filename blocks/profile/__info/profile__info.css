@@ -1,8 +1,32 @@
 .profile__info {
-  max-width: 490px;
+  width: 100%;
+  max-width: 336px;
   display: grid;
-  grid-template-columns: 120px 335px;
+  grid-template-columns: 296px 24px;
   grid-template-rows: 70px 42px;
-  column-gap: 30px;
+  column-gap: 18px;
   row-gap: 8px;
+  position: relative;
+  right: 12%;
+}
+
+@media screen and (max-width: 1200px) {
+  .profile__info {
+    right: 6%;
+  }
+}
+
+@media screen and (max-width: 1023px) {
+  .profile__info {
+    right: 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .profile__info {
+    max-width: 282px;
+    grid-template-columns: 235px 37px;
+    grid-template-rows: 50px 50px;
+    column-gap: 10px;
+  }
 }
