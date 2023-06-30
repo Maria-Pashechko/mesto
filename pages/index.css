@@ -25,11 +25,12 @@
 @import url(../blocks/element/__name/element__name.css);
 @import url(../blocks/element/__text/element__text.css);
 @import url(../blocks/element/__like-btn/element__like-btn.css);
-@import url(../blocks/element/_1/element_1.css);
-@import url(../blocks/element/_2/element_2.css);
-@import url(../blocks/element/_3/element_3.css);
-@import url(../blocks/element/_4/element_4.css);
-@import url(../blocks/element/_5/element_5.css);
-@import url(../blocks/element/_6/element_6.css);
+@import url(../blocks/element/__card/element__card.css);
+@import url(../blocks/element/__card/_1/element__card_1.css);
+@import url(../blocks/element/__card/_2/element__card_2.css);
+@import url(../blocks/element/__card/_3/element__card_3.css);
+@import url(../blocks/element/__card/_4/element__card_4.css);
+@import url(../blocks/element/__card/_5/element__card_5.css);
+@import url(../blocks/element/__card/_6/element__card_6.css);
 
 @import url(../blocks/footer/footer.css);
