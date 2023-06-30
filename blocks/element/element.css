@@ -1,0 +1,10 @@
+.element {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  object-fit: contain;
+  max-width: 100%;
+  background-color: #fff;
+  border-radius: 10px;
+}
+

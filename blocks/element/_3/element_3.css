@@ -1,0 +1,15 @@
+.element_3 {
+
+}
+
+.element_3::before {
+  content: "";
+  width: 100%;
+  width: 282px;
+  height: 282px;
+  background-image: url(../../../images/places/dombai.jpg);
+  background-size: cover;
+  background-position: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+ }

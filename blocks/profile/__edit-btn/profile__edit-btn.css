@@ -5,12 +5,12 @@
   background-image: url(../../../images/Edit_button.svg);
   background-repeat: no-repeat;
   background-size: contain;
+  background-color: #000;
   grid-row: 1;
   grid-column: 2;
   align-self: end;
   justify-self: end;
   margin-bottom: 7px;
-  cursor: pointer;
 }
 
 @media screen and (max-width: 767px) {
