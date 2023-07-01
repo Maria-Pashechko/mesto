@@ -16,5 +16,7 @@
 @media screen and (max-width: 767px) {
   .profile__edit-btn {
     justify-self: start;
+    width: 18px;
+    height: 18px;
   }
 }

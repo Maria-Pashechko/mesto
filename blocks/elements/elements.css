@@ -3,3 +3,17 @@
   min-height: 744px;
   margin: 50px 0 0;
 }
+
+@media screen and (max-width: 1023px) {
+  .elements {
+    max-width: 582px;
+    margin: 40px 0;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .elements {
+    max-width: 282px;
+    margin: 36px 0 0;
+  }
+}

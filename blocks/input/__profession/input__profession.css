@@ -10,6 +10,12 @@ grid-column: span 2;
 align-self: start;
 }
 
+@media screen and (max-width: 1279px) {
+  .input__profession {
+    text-align: center;
+  }
+}
+
 @media screen and (max-width: 767px) {
   .input__profession {
     max-width: 282px;
@@ -18,6 +24,5 @@ align-self: start;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
-    text-align: center;
   }
 }

@@ -1,9 +1,13 @@
 .element__text {
   margin: 0;
+  max-width: 215px;
   color: #000;
   font-size: 24px;
   font-family: Inter;
   font-style: normal;
   font-weight: 900;
   line-height: normal;
+  white-space: nowrap; /* Текст не переносится на новую строку*/
+  overflow: hidden; /* Обрезаем всё, что за пределами блока */
+  text-overflow: ellipsis; /* многоточие */
 }
