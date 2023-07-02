@@ -6,6 +6,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 45px 0 0;
+  border-bottom: 1px solid #545454;
 }
 
 @media screen and (max-width: 767px) {

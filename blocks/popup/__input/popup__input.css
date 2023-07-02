@@ -1,0 +1,7 @@
+.popup__input {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 360px;
+  min-height: 86px;
+}

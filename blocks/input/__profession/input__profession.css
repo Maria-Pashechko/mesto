@@ -10,7 +10,7 @@ grid-column: span 2;
 align-self: start;
 }
 
-@media screen and (max-width: 1279px) {
+@media screen and (max-width: 1023px) {
   .input__profession {
     text-align: center;
   }

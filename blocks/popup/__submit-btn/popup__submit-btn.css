@@ -1,6 +1,10 @@
-.footer__copyright {
-  margin: 0;
-  color: #545454;
+.popup__submit-btn {
+  padding: 0;
+  border-radius: 2px;
+  width: 358px;
+  height: 50px;
+  background-color: #000;
+  color: #fff;
   font-size: 18px;
   font-family: Inter;
   font-style: normal;
@@ -9,7 +13,9 @@
 }
 
 @media screen and (max-width: 767px) {
-  .footer__copyright {
+  .popup__submit-btn {
+    width: 238px;
+    height: 46px;
     font-size: 14px;
     font-family: Inter;
     font-style: normal;
@@ -17,3 +23,4 @@
     line-height: normal;
   }
 }
+

@@ -15,65 +15,76 @@
   <div class="page">
     <header class="header">
       <img class="header__logo-mesto" src="./images/logo-mesto.svg" alt="Место">
-      <img class="header__line" src="./images/line.svg" alt="разделительная линия">
     </header>
     <main>
       <section class="profile">
-        <div class="profile__avatar"></div> 
-        <div class="profile__info">
+        <div class="profile__avatar"></div>
+        <div class="profile__input">
           <input type="text" name="profile__name" value="Жак-Ив Кусто" class="input input__name">
           <button type="button" class="button profile__edit-btn"></button>            
           <input type="text" name="profile__profession" value="Исследователь океана" class="input input__profession">
         </div>
         <button type="button" class="button profile__add-btn"></button>
       </section>
-
       <section class="elements">
         <ul class="list elements__list">
-          <li class="element element__card element__card_1">            
+          <li class="element element__card element__card_1">
            <div class="element__name">
               <p class="element__text">Карачаевск</p>
               <button type="button" class="button element__like-btn"></button>
             </div>
           </li>
-          <li class="element element__card element__card_2">            
+          <li class="element element__card element__card_2">
             <div class="element__name">
               <p class="element__text">Гора Эльбрус</p>
               <button type="button" class="button element__like-btn"></button>
-            </div> 
+            </div>
           </li>
           <li class="element element__card element__card_3">
             <div class="element__name">
               <p class="element__text">Домбай</p>
               <button type="button" class="button element__like-btn"></button>
-            </div> 
+            </div>
           </li>
           <li class="element element__card element__card_4">
             <div class="element__name">
               <p class="element__text">Гора Архыз</p>
               <button type="button" class="button element__like-btn"></button>
-            </div> 
+            </div>
           </li>
           <li class="element element__card element__card_5">
             <div class="element__name">
               <p class="element__text">Вулкан Горелый</p>
               <button type="button" class="button element__like-btn"></button>
-            </div> 
+            </div>
           </li>
           <li class="element element__card element__card_6">
             <div class="element__name">
               <p class="element__text">Село Гамсутль (республика Дагестан)</p>
               <button type="button" class="button element__like-btn"></button>
-            </div> 
+            </div>
           </li>
-
         </ul>
-
       </section>
     </main>
     <footer class="footer">
       <p class="footer__copyright">&#169; 2020 Mesto Russia</p>
     </footer>
+  </div>
+  <div class="popup"> <!-- class popup_opened будет добавлен через js-->
+    <button type="button" class="button popup__close-icon"></button>
+    <div class="popup__form">
+      <div class="popup__redact-profile">
+        <h3 class="popup__title">Редактировать профиль</h3>
+        <div class="popup__input">
+          <input type="text" name="popap__name" value="Жак-Ив Кусто" placeholder="Ваше имя и фамилия" class="popup__field">
+          <input type="text" name="popap__profession" value="Исследователь океана" placeholder="Ваша профессия" class="popup__field">
+        </div>
+        <button class="button popup__submit-btn">
+          Сохранить
+        </button>
+      </div>
+    </div>
   </div>
 </body>
 </html>

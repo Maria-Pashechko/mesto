@@ -1,4 +1,4 @@
-.profile__info {
+.profile__input {
   width: 100%;
   max-width: 336px;
   display: grid;
@@ -6,24 +6,11 @@
   grid-template-rows: 70px 42px;
   column-gap: 18px;
   row-gap: 8px;
-  position: relative;
-  right: 12%;
-}
-
-@media screen and (max-width: 1279px) {
-  .profile__info {
-    right: 0;
-  }
-}
-
-@media screen and (max-width: 1023px) {
-  .profile__info {
-    right: 0;
-  }
+  margin-right: auto; 
 }
 
 @media screen and (max-width: 980px) {
-  .profile__info {
+  .profile__input {
     max-width: 282px;
     grid-template-columns: 235px 37px;
     grid-template-rows: 50px 50px;
