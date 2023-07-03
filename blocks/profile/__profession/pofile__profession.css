@@ -1,0 +1,33 @@
+.pofile__profession {
+  margin: 0;
+  color: #fff;
+  max-width: 330px;
+  font-size: 18px;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  grid-row: 2;
+  grid-column: span 2;
+  align-self: start;
+  white-space: nowrap; /* Текст не переносится на новую строку*/
+  overflow: hidden; /* Обрезаем всё, что за пределами блока */
+  text-overflow: ellipsis; /* многоточие */
+}
+
+@media screen and (max-width: 1023px) {
+  .pofile__profession {
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .pofile__profession {
+    max-width: 282px;
+    font-size: 14px;
+    font-family: Inter;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+}

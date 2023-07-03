@@ -8,4 +8,7 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  white-space: nowrap; /* Текст не переносится на новую строку*/
+  overflow: hidden; /* Обрезаем всё, что за пределами блока */
+  text-overflow: ellipsis; /* многоточие */
   }

@@ -1,4 +1,4 @@
-.profile__input {
+.profile__data {
   width: 100%;
   max-width: 336px;
   display: grid;
@@ -10,7 +10,7 @@
 }
 
 @media screen and (max-width: 980px) {
-  .profile__input {
+  .profile__data {
     max-width: 282px;
     grid-template-columns: 235px 37px;
     grid-template-rows: 50px 50px;
