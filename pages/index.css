@@ -24,13 +24,12 @@
 @import url(../blocks/element/__text/element__text.css);
 @import url(../blocks/element/__like-btn/element__like-btn.css);
 @import url(../blocks/element/__like-btn/_active/element__like-btn_active.css);
-@import url(../blocks/element/__card/element__card.css);
-@import url(../blocks/element/__card/_place/element__card_place_karachaevsk.css);
-@import url(../blocks/element/__card/_place/element__card_place_elbrus-mountain.css);
-@import url(../blocks/element/__card/_place/element__card_place_dombai.css);
-@import url(../blocks/element/__card/_place/element__card_place_arkhyz.css);
-@import url(../blocks/element/__card/_place/element__card_place_gorely.css);
-@import url(../blocks/element/__card/_place/element__card_place_gamsutl.css);
+@import url(../blocks/element/_place/element_place_karachaevsk.css);
+@import url(../blocks/element/_place/element_place_elbrus-mountain.css);
+@import url(../blocks/element/_place/element_place_dombai.css);
+@import url(../blocks/element/_place/element_place_arkhyz.css);
+@import url(../blocks/element/_place/element_place_gorely.css);
+@import url(../blocks/element/_place/element_place_gamsutl.css);
 
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
