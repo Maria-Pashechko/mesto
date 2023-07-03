@@ -20,45 +20,45 @@
       <section class="profile">
         <div class="profile__avatar"></div>
         <div class="profile__data">
-          <h1 class="pofile__name">Жак-Ив Кусто</h1>
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
           <button type="button" class="button profile__edit-btn"></button>
-          <p class="pofile__profession">Исследователь океана</p>
+          <p class="profile__profession">Исследователь океана</p>
         </div>
         <button type="button" class="button profile__add-btn"></button>
       </section>
       <section class="elements">
         <ul class="list elements__list">
-          <li class="element element__card element__card_karachaevsk">
+          <li class="element element__card element__card_place_karachaevsk">
            <div class="element__container">
               <p class="element__text">Карачаевск</p>
               <button type="button" class="button element__like-btn"></button>
             </div>
           </li>
-          <li class="element element__card element__card_elbrus-mountain">
+          <li class="element element__card element__card_place_elbrus-mountain">
             <div class="element__container">
               <p class="element__text">Гора Эльбрус</p>
               <button type="button" class="button element__like-btn"></button>
             </div>
           </li>
-          <li class="element element__card element__card_dombai">
+          <li class="element element__card element__card_place_dombai">
             <div class="element__container">
               <p class="element__text">Домбай</p>
               <button type="button" class="button element__like-btn"></button>
             </div>
           </li>
-          <li class="element element__card element__card_arkhyz">
+          <li class="element element__card element__card_place_arkhyz">
             <div class="element__container">
               <p class="element__text">Гора Архыз</p>
               <button type="button" class="button element__like-btn"></button>
             </div>
           </li>
-          <li class="element element__card element__card_gorely">
+          <li class="element element__card element__card_place_gorely">
             <div class="element__container">
               <p class="element__text">Вулкан Горелый</p>
               <button type="button" class="button element__like-btn"></button>
             </div>
           </li>
-          <li class="element element__card element__card_gamsutl">
+          <li class="element element__card element__card_place_gamsutl">
             <div class="element__container">
               <p class="element__text">Село Гамсутль (республика Дагестан)</p>
               <button type="button" class="button element__like-btn"></button>
@@ -71,13 +71,13 @@
       <p class="footer__copyright">&#169; 2020 Mesto Russia</p>
     </footer>
   </div>
-  <div class="popup popup_type_profile-input"> <!-- здесь class popup_opened - управляется в js-->
-    <button type="button" class="button popup__close popup_type_profile-close"></button>
+  <div class="popup"> <!-- здесь class popup_opened - управляется в js (popup_type_profile-input,если будут ещё попапы)-->
+    <button type="button" class="button popup__close-btn"></button> <!--popup_type_profile-close ?-->
     <div class="popup__container">
       <form class="popup__form" method="get" novalidate>
         <h2 class="popup__title">Редактировать профиль</h2>
-        <input type="text" name="name" value="" placeholder="Имя" class="popup__field popap__name">
-        <input type="text" name="profession" value="" placeholder="О себе" class="popup__field popap__profession">
+        <input type="text" name="name" value="" placeholder="Имя" class="popup__field-name">
+        <input type="text" name="profession" value="" placeholder="О себе" class="popup__field-profession">
         <button type="submit" class="button popup__submit-btn">Сохранить</button>
       </form>
     </div>

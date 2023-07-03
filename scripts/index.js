@@ -1,20 +1,20 @@
 // находим кнопку редактирования профиля
 const buttonProfileEdit = document.querySelector('.profile__edit-btn')
 // находим попап редактиования профиля
-const popupProfileInput = document.querySelector('.popup_type_profile-input')
+const popupProfileInput = document.querySelector('.popup')
 // кнопка закрытия попапа редактора профиля
-const buttonClosePopupProfile = document.querySelector('.popup_type_profile-close')
+const buttonClosePopupProfile = document.querySelector('.popup__close-btn')
 // находим форму для ввода данных попапа
 const formPopup = document.querySelector('.popup__form')
 // поле формы для имени попап
-let nameInput = document.querySelector('.popap__name')
+let nameInput = document.querySelector('.popup__field-name')
 // поле формы для информации о себе попап
-let professionInput = document.querySelector('.popap__profession')
+let professionInput = document.querySelector('.popup__field-profession')
 
 // находим форму для данных профиля, значения содержимого текста textContent для имени и о себе
 let profileInput = document.querySelector('.profile__data')
-let profileInputName = profileInput.querySelector('.pofile__name')
-let profileInputProfession = profileInput.querySelector('.pofile__profession')
+let profileInputName = profileInput.querySelector('.profile__name')
+let profileInputProfession = profileInput.querySelector('.profile__profession')
 
 function openPopupProfile() { //функция открытия окна редактирования(добавяем попапу класс popup_opened)
   popupProfileInput.classList.add('popup_opened');

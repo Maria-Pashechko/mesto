@@ -12,8 +12,8 @@
 @import url(../blocks/profile/__data/profile__data.css);
 @import url(../blocks/button/button.css);
 @import url(../blocks/profile/__edit-btn/profile__edit-btn.css);
-@import url(../blocks/profile/__name/pofile__name.css);
-@import url(../blocks/profile/__profession/pofile__profession.css);
+@import url(../blocks/profile/__name/profile__name.css);
+@import url(../blocks/profile/__profession/profile__profession.css);
 @import url(../blocks/profile/__add-btn/profile__add-btn.css);
 
 @import url(../blocks/elements/elements.css);
@@ -25,21 +25,22 @@
 @import url(../blocks/element/__like-btn/element__like-btn.css);
 @import url(../blocks/element/__like-btn/_active/element__like-btn_active.css);
 @import url(../blocks/element/__card/element__card.css);
-@import url(../blocks/element/__card_karachaevsk/element__card_karachaevsk.css);
-@import url(../blocks/element/__card_elbrus-mountain/element__card_elbrus-mountain.css);
-@import url(../blocks/element/__card_dombai/element__card_dombai.css);
-@import url(../blocks/element/__card_arkhyz/element__card_arkhyz.css);
-@import url(../blocks/element/__card_gorely/element__card_gorely.css);
-@import url(../blocks/element/__card_gamsutl/element__card_gamsutl.css);
+@import url(../blocks/element/__card/_place/element__card_place_karachaevsk.css);
+@import url(../blocks/element/__card/_place/element__card_place_elbrus-mountain.css);
+@import url(../blocks/element/__card/_place/element__card_place_dombai.css);
+@import url(../blocks/element/__card/_place/element__card_place_arkhyz.css);
+@import url(../blocks/element/__card/_place/element__card_place_gorely.css);
+@import url(../blocks/element/__card/_place/element__card_place_gamsutl.css);
 
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 
 @import url(../blocks/popup/popup.css);
-@import url(../blocks/popup/__close/popup__close.css);
+@import url(../blocks/popup/__close-btn/popup__close-btn.css);
 @import url(../blocks/popup/__container/popup__container.css);
 @import url(../blocks/popup/__form/popup__form.css);
 @import url(../blocks/popup/__title/popup__title.css);
-@import url(../blocks/popup/__field/popup__field.css);
+@import url(../blocks/popup/__field-name/popup__field-name.css);
+@import url(../blocks/popup/__field-profession/popup__field-profession.css);
 @import url(../blocks/popup/__submit-btn/popup__submit-btn.css);
 @import url(../blocks/popup/_opened/popup_opened.css);

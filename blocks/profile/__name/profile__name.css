@@ -1,33 +1,29 @@
-.pofile__profession {
+.profile__name {
   margin: 0;
   color: #fff;
-  max-width: 330px;
-  font-size: 18px;
+  max-width: 295px;
+  font-size: 42px;
   font-family: Inter;
   font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  grid-row: 2;
-  grid-column: span 2;
-  align-self: start;
+  font-weight: 500;
+  line-height: 48px;
+  grid-row: 1;
+  grid-column: 1;
+  align-self: end;
   white-space: nowrap; /* Текст не переносится на новую строку*/
   overflow: hidden; /* Обрезаем всё, что за пределами блока */
   text-overflow: ellipsis; /* многоточие */
 }
 
 @media screen and (max-width: 1023px) {
-  .pofile__profession {
-    text-align: center;
-  }
-}
-
-@media screen and (max-width: 767px) {
-  .pofile__profession {
-    max-width: 282px;
-    font-size: 14px;
+  .profile__name {
+    max-width: 189px;
+    font-size: 27px;
     font-family: Inter;
     font-style: normal;
-    font-weight: 400;
+    font-weight: 500;
     line-height: normal;
+    align-self: end;
+    justify-self: end;
   }
 }
