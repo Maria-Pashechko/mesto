@@ -1,5 +1,5 @@
 .popup__field {
-  height: 27px;
+  min-height: 27px;
   padding: 0;
   border: none;
   border-bottom: 1px solid rgba(0, 0, 0, .2);

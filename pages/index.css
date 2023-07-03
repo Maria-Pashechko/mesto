@@ -25,12 +25,12 @@
 @import url(../blocks/element/__like-btn/element__like-btn.css);
 @import url(../blocks/element/__like-btn/_active/element__like-btn_active.css);
 @import url(../blocks/element/__card/element__card.css);
-@import url(../blocks/element/__card/_1/element__card_1.css);
-@import url(../blocks/element/__card/_2/element__card_2.css);
-@import url(../blocks/element/__card/_3/element__card_3.css);
-@import url(../blocks/element/__card/_4/element__card_4.css);
-@import url(../blocks/element/__card/_5/element__card_5.css);
-@import url(../blocks/element/__card/_6/element__card_6.css);
+@import url(../blocks/element/__card_karachaevsk/element__card_karachaevsk.css);
+@import url(../blocks/element/__card_elbrus-mountain/element__card_elbrus-mountain.css);
+@import url(../blocks/element/__card_dombai/element__card_dombai.css);
+@import url(../blocks/element/__card_arkhyz/element__card_arkhyz.css);
+@import url(../blocks/element/__card_gorely/element__card_gorely.css);
+@import url(../blocks/element/__card_gamsutl/element__card_gamsutl.css);
 
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);

@@ -10,23 +10,19 @@ const formPopup = document.querySelector('.popup__form')
 let nameInput = document.querySelector('.popap__name')
 // поле формы для информации о себе попап
 let professionInput = document.querySelector('.popap__profession')
-console.log(nameInput.value)
-console.log(professionInput.value)
 
 // находим форму для данных профиля, значения содержимого текста textContent для имени и о себе
 let profileInput = document.querySelector('.profile__data')
 let profileInputName = profileInput.querySelector('.pofile__name')
 let profileInputProfession = profileInput.querySelector('.pofile__profession')
-console.log(profileInputName.textContent)
-console.log(profileInputProfession.textContent)
 
 function openPopupProfile() { //функция открытия окна редактирования(добавяем попапу класс popup_opened)
   popupProfileInput.classList.add('popup_opened');
-  nameInput.value = profileInputName.textContent; // присваиваем атрибуту инпута имени value значение существующего текста из профиля
+  nameInput.value = profileInputName.textContent; // в поле для имени присваиваем атрибуту value значение существующего текста из профиля
   professionInput.value = profileInputProfession.textContent; // -"- то же для инпута о себе
 }
 
-function closePopupProfile() { //функция закрытия окна редактирования
+function closePopupProfile() { //функция закрытия окна редактирования (крестик)
   popupProfileInput.classList.remove('popup_opened');
 }
 
@@ -34,9 +30,9 @@ function formSubmitHandler(evt) {  //редактирование профиля
   evt.preventDefault(); // метод отменяет стандартное событие перезагрузки страницы при отправке данных
                         // Так мы можем определить свою логику отправки.
                         // О том, как это делать, расскажем позже.
-  profileInputName.textContent = nameInput.value;
-  profileInputProfession.textContent = professionInput.value;
-  closePopupProfile()
+  profileInputName.textContent = nameInput.value; // в заголовке для имени профиля присваиваем значение вновь введенного текста из попапа
+  profileInputProfession.textContent = professionInput.value; //то же для текста о себе
+  closePopupProfile() //закрытие попапа по окончанию функции
 }
 
 // обработчик к форме:
