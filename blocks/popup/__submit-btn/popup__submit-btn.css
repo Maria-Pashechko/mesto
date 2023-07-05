@@ -6,10 +6,13 @@
   background-color: #000;
   color: #fff;
   font-size: 18px;
-  font-family: Inter;
   font-style: normal;
   font-weight: 400;
-  line-height: normal;
+  line-height: 22px; /*высота строки по скаченному макету normal, в онлайн режиме - указаны px */
+}
+
+.popup__submit-btn:hover {
+  opacity: .8;
 }
 
 @media screen and (max-width: 767px) {
@@ -17,10 +20,6 @@
     width: 238px;
     height: 46px;
     font-size: 14px;
-    font-family: Inter;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
+    line-height: 17px;
   }
 }
-

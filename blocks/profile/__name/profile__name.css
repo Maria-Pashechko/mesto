@@ -1,14 +1,12 @@
 .profile__name {
   margin: 0;
   color: #fff;
-  max-width: 295px;
   font-size: 42px;
-  font-family: Inter;
   font-style: normal;
   font-weight: 500;
-  line-height: 48px;
+  line-height: 48px; /*высота строки по макету 48px*/
   grid-row: 1;
-  grid-column: 1;
+  grid-column: span 2;
   align-self: end;
   white-space: nowrap; /* Текст не переносится на новую строку*/
   overflow: hidden; /* Обрезаем всё, что за пределами блока */
@@ -17,13 +15,9 @@
 
 @media screen and (max-width: 1023px) {
   .profile__name {
-    max-width: 189px;
+    grid-column: 2;
     font-size: 27px;
-    font-family: Inter;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-    align-self: end;
-    justify-self: end;
+    line-height: 33px; /*высота строки по скаченному макету normal, в онлайн режиме - указаны px */
+    text-align: center;
   }
 }

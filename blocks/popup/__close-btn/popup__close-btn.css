@@ -2,21 +2,24 @@
   width: 32px;
   height: 32px;
   background-image: url(../../../images/close.svg);
-  background-color: rgba(0, 0, 0, 0);
+  background-color: transparent;
   background-repeat: no-repeat;
   background-size: cover;
-  border: none;
   padding: 0;
-  position: relative;
-  left: 235px;
-  bottom: 10px;
+  position: absolute;
+  right: -40px;
+  top: -40px;
+}
+
+.popup__close-btn:hover {
+  opacity: .6;
 }
 
 @media screen and (max-width: 767px) {
   .popup__close-btn {
     width: 20px;
     height: 20px;
-    left: 130px;
-    bottom: 16px;
+    right: 0px;
+    top: -36px;
   }
 }

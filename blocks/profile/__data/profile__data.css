@@ -2,18 +2,17 @@
   width: 100%;
   max-width: 336px;
   display: grid;
-  grid-template-columns: 296px 24px;
-  grid-template-rows: 70px 42px;
+  grid-template-columns: 6.5fr 0.5fr;
   column-gap: 18px;
   row-gap: 8px;
-  margin-right: auto; 
+  margin-right: auto;
 }
 
-@media screen and (max-width: 980px) {
+@media screen and (max-width: 1023px) {
   .profile__data {
     max-width: 282px;
-    grid-template-columns: 235px 37px;
-    grid-template-rows: 50px 50px;
+    padding: 25px 0 35px;
+    grid-template-columns: 1fr 6.5fr 1fr;
     column-gap: 10px;
   }
 }

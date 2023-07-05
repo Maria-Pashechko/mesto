@@ -11,5 +11,5 @@
   align-items: center;
   opacity: 0; /*полная прозрачность*/
   visibility: hidden; /*скрытие*/
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease; /*анимация плавного появления*/
 }

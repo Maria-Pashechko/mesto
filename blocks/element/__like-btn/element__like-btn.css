@@ -3,5 +3,9 @@
   height: 19px;
   background-image: url(../../../images/like-btn.svg);
   background-repeat: no-repeat;
-  align-self: center;
+  margin-top: 7px;
+}
+
+.element__like-btn:hover {
+  opacity: .5;
 }

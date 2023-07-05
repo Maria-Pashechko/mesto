@@ -16,52 +16,58 @@
     <header class="header">
       <img class="header__logo-mesto" src="./images/logo-mesto.svg" alt="Место">
     </header>
-    <main>
+    <main class="content">
       <section class="profile">
-        <div class="profile__avatar"></div>
+        <img class="profile__avatar" src="./images/avatar.jpg" alt="аватар пользователя">
         <div class="profile__data">
-          <h1 class="profile__name">Жак-Ив Кусто</h1>
-          <button type="button" class="button profile__edit-btn"></button>
+          <h1 class="profile__name">Жак Ив Кусто</h1>
+          <button type="button" class="button profile__edit-btn" aria-label="Редактировать"></button>
           <p class="profile__profession">Исследователь океана</p>
         </div>
-        <button type="button" class="button profile__add-btn"></button>
+        <button type="button" class="button profile__add-btn" aria-label="Добавить"></button>
       </section>
       <section class="elements">
         <ul class="list elements__list">
-          <li class="element element_place_karachaevsk">
-           <div class="element__container">
-              <p class="element__text">Карачаевск</p>
-              <button type="button" class="button element__like-btn"></button>
+          <li class="element">
+            <img class="element__img" src="./images/elements-img/karachaevsk.jpg" alt="Карачаевск">
+            <div class="element__caption">
+              <h2 class="element__text">Карачаевск</h2>
+              <button type="button" class="button element__like-btn" aria-label="Поставить лайк"></button>
             </div>
           </li>
-          <li class="element element_place_elbrus-mountain">
-            <div class="element__container">
-              <p class="element__text">Гора Эльбрус</p>
-              <button type="button" class="button element__like-btn"></button>
+          <li class="element">
+            <img class="element__img" src="./images/elements-img/elbrus-mountain.jpg" alt="Эльбрус">
+            <div class="element__caption">
+              <h2 class="element__text">Гора Эльбрус</h2>
+              <button type="button" class="button element__like-btn" aria-label="Поставить лайк"></button>
             </div>
           </li>
-          <li class="element element_place_dombai">
-            <div class="element__container">
-              <p class="element__text">Домбай</p>
-              <button type="button" class="button element__like-btn"></button>
+          <li class="element">
+            <img class="element__img" src="./images/elements-img/dombai.jpg" alt="Домбай">
+            <div class="element__caption">
+              <h2 class="element__text">Домбай</h2>
+              <button type="button" class="button element__like-btn" aria-label="Поставить лайк"></button>
             </div>
           </li>
-          <li class="element element_place_arkhyz">
-            <div class="element__container">
-              <p class="element__text">Гора Архыз</p>
-              <button type="button" class="button element__like-btn"></button>
+          <li class="element">
+            <img class="element__img" src="./images/elements-img/arkhyz.jpg" alt="Архыз">
+            <div class="element__caption">
+              <h2 class="element__text">Архыз</h2>
+              <button type="button" class="button element__like-btn" aria-label="Поставить лайк"></button>
             </div>
           </li>
-          <li class="element element_place_gorely">
-            <div class="element__container">
-              <p class="element__text">Вулкан Горелый</p>
-              <button type="button" class="button element__like-btn"></button>
+          <li class="element">
+            <img class="element__img" src="./images/elements-img/gorely.jpg" alt="Вулкан Горелый">
+            <div class="element__caption">
+              <h2 class="element__text">Вулкан Горелый</h2>
+              <button type="button" class="button element__like-btn" aria-label="Поставить лайк"></button>
             </div>
           </li>
-          <li class="element element_place_gamsutl">
-            <div class="element__container">
-              <p class="element__text">Село Гамсутль (республика Дагестан)</p>
-              <button type="button" class="button element__like-btn"></button>
+          <li class="element">
+            <img class="element__img" src="./images/elements-img/gamsutl.jpg" alt="Село Гамсутль">
+            <div class="element__caption">
+              <h2 class="element__text">Село Гамсутль (республика Дагестан)</h2>
+              <button type="button" class="button element__like-btn" aria-label="Поставить лайк"></button>
             </div>
           </li>
         </ul>
@@ -71,13 +77,15 @@
       <p class="footer__copyright">&#169; 2020 Mesto Russia</p>
     </footer>
   </div>
-  <div class="popup"> <!-- здесь class popup_opened - управляется в js (popup_type_profile-input,если будут ещё попапы)-->
-    <button type="button" class="button popup__close-btn"></button> <!--popup_type_profile-close ?-->
+  <div class="popup popup_type_profile-input"> <!-- здесь class popup_opened - управляется в js (popup_type_profile-input,если будут ещё попапы)-->
     <div class="popup__container">
-      <form class="popup__form" method="get" novalidate>
-        <h2 class="popup__title">Редактировать профиль</h2>
-        <input type="text" name="name" value="" placeholder="Имя" class="popup__field-name">
-        <input type="text" name="profession" value="" placeholder="О себе" class="popup__field-profession">
+      <button type="button" class="button popup__close-btn" aria-label="Закрыть"></button>
+      <form class="popup__form" method="get" name="profileForm" novalidate>
+        <h3 class="popup__title">Редактировать профиль</h3>
+        <div class="popup__info">
+          <input type="text" name="name" value="" placeholder="Имя" class="popup__input popup__input_field_name">
+          <input type="text" name="profession" value="" placeholder="О себе" class="popup__input popup__input_field_profession">
+        </div>
         <button type="submit" class="button popup__submit-btn">Сохранить</button>
       </form>
     </div>

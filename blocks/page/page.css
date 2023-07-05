@@ -1,6 +1,7 @@
 .page {
   background-color: #000;
   max-width: 880px;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -15,6 +16,6 @@
 
 @media screen and (max-width: 767px) {
   .page {
-    max-width: 282px;
+    max-width: 320px;
   }
 }

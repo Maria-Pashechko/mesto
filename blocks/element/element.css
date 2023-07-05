@@ -1,20 +1,8 @@
 .element {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  object-fit: contain;
-  max-width: 100%;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
   background-color: #fff;
   border-radius: 10px;
-}
-
-.element::before {
-  content: "";
-  width: 100%;
-  width: 282px;
-  height: 282px;
-  background-size: cover;
-  background-position: center;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
 }

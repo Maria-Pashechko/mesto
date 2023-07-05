@@ -1,15 +1,15 @@
 // находим кнопку редактирования профиля
 const buttonProfileEdit = document.querySelector('.profile__edit-btn')
 // находим попап редактиования профиля
-const popupProfileInput = document.querySelector('.popup')
+const popupProfileInput = document.querySelector('.popup_type_profile-input')
 // кнопка закрытия попапа редактора профиля
 const buttonClosePopupProfile = document.querySelector('.popup__close-btn')
 // находим форму для ввода данных попапа
 const formPopup = document.querySelector('.popup__form')
 // поле формы для имени попап
-let nameInput = document.querySelector('.popup__field-name')
+let nameInput = document.querySelector('.popup__input_field_name')
 // поле формы для информации о себе попап
-let professionInput = document.querySelector('.popup__field-profession')
+let professionInput = document.querySelector('.popup__input_field_profession')
 
 // находим форму для данных профиля, значения содержимого текста textContent для имени и о себе
 let profileInput = document.querySelector('.profile__data')
