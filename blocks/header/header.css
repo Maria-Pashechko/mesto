@@ -6,7 +6,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 45px 0 0;
-  border-bottom: 1px solid rgba(255, 255, 255, .6);
+  border-bottom: 1px solid rgba(84, 84, 84, .7); /*по макету color HEX #545454 (пропустила этот момент :\ ) = RGBA 84 84 84*/ 
 }
 
 @media screen and (max-width: 767px) {

@@ -3,6 +3,7 @@
   height: 50px;
   padding: 0;
   border: 2px solid #fff;
+  border-radius: 2px;
   background-image: url(../../../images/add-btn.svg);
   background-position: center;
   background-repeat: no-repeat;

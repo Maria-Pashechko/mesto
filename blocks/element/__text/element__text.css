@@ -10,9 +10,3 @@
   overflow: hidden; /* Обрезаем всё, что за пределами блока */
   text-overflow: ellipsis; /* многоточие */
 }
-
-@media screen and (max-width: 767px) {
-  .element__text {
-    font-size: 24px;
-  }
-}
