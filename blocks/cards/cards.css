@@ -1,17 +1,17 @@
-.elements {
+.cards {
   max-width: 880px;
   margin: 50px 0 0;
 }
 
 @media screen and (max-width: 1023px) {
-  .elements {
+  .cards {
     max-width: 582px;
     margin: 40px 0;
   }
 }
 
 @media screen and (max-width: 767px) {
-  .elements {
+  .cards {
     max-width: 282px;
     margin: 36px auto 0;
   }

@@ -1,11 +1,12 @@
-.element__like-btn {
+.card__like-btn {
   width: 22px;
   height: 19px;
   background-image: url(../../../images/like-btn.svg);
+  background-color: transparent;
   background-repeat: no-repeat;
   margin-top: 7px;
 }
 
-.element__like-btn:hover {
+.card__like-btn:hover {
   opacity: .5;
 }
