@@ -1,3 +1,15 @@
+// 6 карточек на первоначальной странице
+
+for (let i = initialCards.length - 1; i >= 0; i--){
+  createCard(initialCards[i].name, initialCards[i].link);
+  console.log(createCard);
+}
+/* другой способ 
+initialCards.slice().reverse().forEach((element) => {
+  createCard(element.name, element.link);
+})*/
+
+
 //Редактирование профиля
 
 // находим кнопку редактирования профиля, попап, кнопку закрытия попапа, форму и поля формы попапа (имя и о себе)
@@ -55,6 +67,25 @@ const closePopupAddCard = () => { //функция закрытия окна д�
   popupAddCard.classList.remove('popup_opened');
 }
 
+//слушатель со значением клик на кнопки открытия и закрытия попапа +
+buttonAddCard.addEventListener('click', openPopupAddCard)
+buttonClosePopupAddCard.addEventListener('click', closePopupAddCard)
+
+//Открытие и закрытие попапа просмотра картинки
+// находим кнопку-картинку, попап просмотра картинки, контейнер с содержимым попапа, кнопку закрытия попапа картинки, картинку, подпись к картинке
+const popupImgOpen = document.querySelector('.popup_type_open-img')
+popupImgOpen.style = 'background-color: rgba(0, 0, 0, .9)'
+const popupImgContainer = popupImgOpen.querySelector ('.popup__img-container')
+const buttonClosePopupImgOpen = popupImgContainer.querySelector('.popup__close-btn')
+const imgPopup = popupImgContainer.querySelector('.popup__img')
+const captionImgPopup = popupImgContainer.querySelector('.popup__img-caption')
+
+const closePopupImgOpen = () => { //функция закрытия окна добавления картинки (крестик)
+  popupImgOpen.classList.remove('popup_opened');
+}
+//слушатель со значением клик на кнопку закрытия попапа просмотра картинки
+buttonClosePopupImgOpen.addEventListener('click', closePopupImgOpen)
+
 // функция создания шаблона новой карточки
 function createCard(name, link) {
   //находим место в разметке, куда будут добавляться карточки
@@ -76,7 +107,16 @@ function createCard(name, link) {
   // функция удаления карточки
   const buttonTrashCard = card.querySelector('.card__trash-btn');
   buttonTrashCard.addEventListener('click', function() {
-    buttonTrashCard.closest('.card').remove(); //closest - "ближайший" элемент (родитель или сосед)
+    card.remove();
+  });
+
+  //функция открытия просмотра картинки
+  const buttonImg = card.querySelector('.card__img-btn');
+  buttonImg.addEventListener('click', function() {
+    popupImgOpen.classList.add('popup_opened');
+    imgPopup.src = link;
+    imgPopup.alt = name;
+    captionImgPopup.textContent = name;
   });
 
   listCards.prepend(card); //добавление карточки в начало списка на странице
@@ -90,7 +130,7 @@ function formSubmitCard(evt) {
   const nameCard = formPopupAddCard.querySelector('.popup__input_card_name');
   const linkCard = formPopupAddCard.querySelector('.popup__input_card_link');
   if (nameCard.value === '' || linkCard.value === '')
-    return  // выход из функции, если поля пустые (когда-нибудь я научусь "посвечивать" поля обязательные к заполнению :)
+    return  // выход из функции, если поля пустые (когда-нибудь я научусь "подсвечивать" поля обязательные к заполнению :)
 
   //вызов функции создания шаблона
   createCard(nameCard.value, linkCard.value);
@@ -102,10 +142,6 @@ function formSubmitCard(evt) {
 
 // обработчик к форме - будет следить за событием “submit” - «отправка»
 formPopupAddCard.addEventListener('submit', formSubmitCard)
-
-//слушатель со значением клик на кнопки открытия и закрытия попапа +
-buttonAddCard.addEventListener('click', openPopupAddCard)
-buttonClosePopupAddCard.addEventListener('click', closePopupAddCard)
 
 
 

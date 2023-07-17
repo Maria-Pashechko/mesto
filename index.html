@@ -28,50 +28,6 @@
       </section>
       <section class="cards">
         <ul class="list cards__list">
-          
-          <li class="card">
-            <img class="card__img" src="./images/cards-img/karachaevsk.jpg" alt="Карачаевск">
-            <button type="button" class="button card__trash-btn" aria-label="Удалить фотографию"></button>
-            <div class="card__caption">
-              <h2 class="card__text">Карачаевск</h2>
-              <button type="button" class="button card__like-btn" aria-label="Поставить лайк"></button>
-            </div>
-          </li>
-          <li class="card">
-            <img class="card__img" src="./images/cards-img/elbrus-mountain.jpg" alt="Эльбрус">
-            <div class="card__caption">
-              <h2 class="card__text">Гора Эльбрус</h2>
-              <button type="button" class="button card__like-btn" aria-label="Поставить лайк"></button>
-            </div>
-          </li>
-          <li class="card">
-            <img class="card__img" src="./images/cards-img/dombai.jpg" alt="Домбай">
-            <div class="card__caption">
-              <h2 class="card__text">Домбай</h2>
-              <button type="button" class="button card__like-btn" aria-label="Поставить лайк"></button>
-            </div>
-          </li>
-          <li class="card">
-            <img class="card__img" src="./images/cards-img/arkhyz.jpg" alt="Архыз">
-            <div class="card__caption">
-              <h2 class="card__text">Архыз</h2>
-              <button type="button" class="button card__like-btn" aria-label="Поставить лайк"></button>
-            </div>
-          </li>
-          <li class="card">
-            <img class="card__img" src="./images/cards-img/gorely.jpg" alt="Вулкан Горелый">
-            <div class="card__caption">
-              <h2 class="card__text">Вулкан Горелый</h2>
-              <button type="button" class="button card__like-btn" aria-label="Поставить лайк"></button>
-            </div>
-          </li>
-          <li class="card">
-            <img class="card__img" src="./images/cards-img/gamsutl.jpg" alt="Село Гамсутль">
-            <div class="card__caption">
-              <h2 class="card__text">Село Гамсутль (республика Дагестан)</h2>
-              <button type="button" class="button card__like-btn" aria-label="Поставить лайк"></button>
-            </div>
-          </li>
         </ul>
       </section>
     </main>
@@ -107,11 +63,23 @@
       </form>
     </div>
   </div>
+  <!--  попап просмота картинки -->
+  <div class="popup popup_type_open-img"> <!-- popup_opened -->
+    <div class="popup__img-container">
+      <button type="button" class="button popup__close-btn" aria-label="Закрыть"></button>
+      <figure class="popup__img-figure">
+        <img class="popup__img" src="" alt="">
+        <figcaption class="popup__img-caption"></figcaption>
+      </figure>      
+    </div>
+  </div>
  
   <!-- template не отображается на странице HTML -->
   <template id="card-template">
     <li class="card">
-      <img class="card__img" src="" alt="">
+      <button type="button" class="button card__img-btn" aria-label="Открыть фотографию для просмотра">
+        <img class="card__img" src="" alt="">
+      </button>
       <button type="button" class="button card__trash-btn" aria-label="Удалить фотографию"></button>
       <div class="card__caption">
         <h2 class="card__text"></h2>

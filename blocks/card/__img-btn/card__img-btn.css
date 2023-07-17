@@ -1,7 +1,6 @@
-.card__img {
+.card__img-btn {
   width: 100%;
-  height: 100%;
+  height: 78.2%;
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  object-fit: cover;
 }
