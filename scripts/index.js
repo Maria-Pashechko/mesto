@@ -1,16 +1,6 @@
-// 6 карточек на первоначальной странице
+// константы
 
-for (let i = initialCards.length - 1; i >= 0; i--){
-  createCard(initialCards[i].name, initialCards[i].link);
-  console.log(createCard);
-}
-/* другой способ 
-initialCards.slice().reverse().forEach((element) => {
-  createCard(element.name, element.link);
-})*/
-
-
-//Редактирование профиля
+// Попап редактирования профиля
 
 // находим кнопку редактирования профиля, попап, кнопку закрытия попапа, форму и поля формы попапа (имя и о себе)
 const buttonProfileEdit = document.querySelector('.profile__edit-btn')
@@ -25,35 +15,6 @@ const profileInput = document.querySelector('.profile__data')
 const profileInputName = profileInput.querySelector('.profile__name')
 const profileInputProfession = profileInput.querySelector('.profile__profession')
 
-//функция открытия окна редактирования(добавяем попапу класс popup_opened)
-function openPopupProfile() {
-  popupProfileInput.classList.add('popup_opened');
-  nameInput.value = profileInputName.textContent; // в поле для имени присваиваем атрибуту value значение существующего текста из профиля
-  professionInput.value = profileInputProfession.textContent; // -"- то же для инпута о себе
-}
-
-//функция закрытия окна редактирования (крестик)
-function closePopupProfile() {
-  popupProfileInput.classList.remove('popup_opened');
-}
-
-//присваивание новых данных профиля
-function formSubmitHandler(evt) {
-  // метод evt.preventDefault() отменяет стандартное событие перезагрузки страницы при отправке данных
-  evt.preventDefault();
-  profileInputName.textContent = nameInput.value; // в заголовке имени профиля присваиваем значение вновь введенного текста из попапа
-  profileInputProfession.textContent = professionInput.value; //то же для текста о себе
-  closePopupProfile() //закрытие попапа по окончанию функции
-}
-
-// обработчик к форме: он будет следить за событием “submit” - «отправка» и запускать функцию редактиования профиля
-formPopup.addEventListener('submit', formSubmitHandler)
-
-//слушатель со значением клик на кнопки открытия и закрытия попапа редактирования
-buttonProfileEdit.addEventListener('click', openPopupProfile)
-buttonClosePopupProfile.addEventListener('click', closePopupProfile)
-
-
 // Попап добавления картинки
 
 // находим кнопку + , попап +, кнопку закрытия попапа +, форму попапа
@@ -61,6 +22,65 @@ const buttonAddCard = document.querySelector('.profile__add-btn')
 const popupAddCard = document.querySelector('.popup_type_card-add')
 const buttonClosePopupAddCard = popupAddCard.querySelector('.popup__close-btn')
 const formPopupAddCard = popupAddCard.querySelector('.popup__form');
+
+//Попап просмотра картинки
+
+// находим кнопку-картинку, попап просмотра картинки, контейнер с содержимым попапа, кнопку закрытия попапа картинки, картинку, подпись к картинке
+const popupImgOpen = document.querySelector('.popup_type_open-img')
+popupImgOpen.style = 'background-color: rgba(0, 0, 0, .9)'
+const popupImgContainer = popupImgOpen.querySelector ('.popup__img-container')
+const buttonClosePopupImgOpen = popupImgContainer.querySelector('.popup__close-btn')
+const imgPopup = popupImgContainer.querySelector('.popup__img')
+const captionImgPopup = popupImgContainer.querySelector('.popup__img-caption')
+
+
+//универсальная функция открытия попапа
+function openPopup(popup) {
+    popup.classList.add('popup_opened');
+}
+
+//универсальная функция закрытия попапа
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
+}
+
+/*функция присваивания значений "имени" и "о себе" из текущего профиля в 
+полях открывающегося окна редактирования*/
+function assignValueProfile() {
+  nameInput.value = profileInputName.textContent; // в поле для имени присваиваем атрибуту value значение существующего текста из профиля
+  professionInput.value = profileInputProfession.textContent; // -"- то же для инпута о себе
+}
+//было
+//функция открытия окна редактирования(добавяем попапу класс popup_opened)
+// function openPopupProfile() {
+//   popupProfileInput.classList.add('popup_opened');
+//   nameInput.value = profileInputName.textContent; // в поле для имени присваиваем атрибуту value значение существующего текста из профиля
+//   professionInput.value = profileInputProfession.textContent; // -"- то же для инпута о себе
+// }
+
+// //функция закрытия окна редактирования (крестик)
+// function closePopupProfile() {
+//   popupProfileInput.classList.remove('popup_opened');
+// }
+
+// функция "отправки"/присвоения новых данных профиля
+function formSubmitHandler(evt) {
+  // метод evt.preventDefault() отменяет стандартное событие перезагрузки страницы при отправке данных
+  evt.preventDefault();
+  profileInputName.textContent = nameInput.value; // в заголовке имени профиля присваиваем значение вновь введенного текста из попапа
+  profileInputProfession.textContent = professionInput.value; //то же для текста о себе
+  closePopup(popupProfileInput) //закрытие попапа по окончанию функции
+}
+
+// обработчик к форме: он будет следить за событием “submit” - «отправка» и запускать функцию редактиования профиля
+formPopup.addEventListener('submit', formSubmitHandler)
+
+//слушатель со значением клик на кнопки открытия и закрытия попапа редактирования
+buttonProfileEdit.addEventListener('click', () => openPopup(popupProfileInput), assignValueProfile()) //openPopupProfile
+buttonClosePopupProfile.addEventListener('click', () => closePopup(popupProfileInput)) //closePopupProfile
+
+
+
 
 //функция открытия и закрытия окна (добавяем и удаляем попапу класс popup_opened)
 const openPopupAddCard = () => {
@@ -75,15 +95,7 @@ buttonAddCard.addEventListener('click', openPopupAddCard)
 buttonClosePopupAddCard.addEventListener('click', closePopupAddCard)
 
 
-//Попап просмотра картинки
 
-// находим кнопку-картинку, попап просмотра картинки, контейнер с содержимым попапа, кнопку закрытия попапа картинки, картинку, подпись к картинке
-const popupImgOpen = document.querySelector('.popup_type_open-img')
-popupImgOpen.style = 'background-color: rgba(0, 0, 0, .9)'
-const popupImgContainer = popupImgOpen.querySelector ('.popup__img-container')
-const buttonClosePopupImgOpen = popupImgContainer.querySelector('.popup__close-btn')
-const imgPopup = popupImgContainer.querySelector('.popup__img')
-const captionImgPopup = popupImgContainer.querySelector('.popup__img-caption')
 
 /* функция открытия окна и слушатель - в теле функции создания новой карточки
 (нет карточки - нет попапа)*/
@@ -154,3 +166,14 @@ function formSubmitCard(evt) {
 
 // обработчик к форме - будет следить за событием “submit” - «отправка»
 formPopupAddCard.addEventListener('submit', formSubmitCard)
+
+
+// 6 карточек на первоначальной странице
+
+for (let i = initialCards.length - 1; i >= 0; i--){
+  createCard(initialCards[i].name, initialCards[i].link);
+}
+/* другой способ 
+initialCards.slice().reverse().forEach((element) => {
+  createCard(element.name, element.link);
+})*/
