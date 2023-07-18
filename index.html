@@ -5,8 +5,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Место</title>
-  <meta name="keywords" content="личная страница, интересные места, Россия, Карачаевск, Эльбрус, Архыз, Вулкан Горелый, Домбай, Гамсутль">
-  <meta name="description" content="одностраничный сайт, имеющий пользовательский профиль, предназначен для размещения фотографий с подписью, возможностью поставить like (учебная проектная работа в Яндекс.Практикум).">
+  <meta name="keywords" content="личная страница, интересные места, Россия, Карачаевск, Архыз, Вулкан Горелый, Гамсутль">
+  <meta name="description" content="одностраничный сайт, имеющий пользовательский профиль, предназначен для размещения и удаления фотографий с подписью, возможностью поставить like, редактировать профиль (учебная проектная работа в Яндекс.Практикум).">
   <meta name="author" content="Мария Пашечко">
   <link rel="icon" href="./images/favicon-m.ico" type="image/x-icon">
   <link rel="stylesheet" href="./pages/index.css">
@@ -26,8 +26,9 @@
         </div>
         <button type="button" class="button profile__add-btn" aria-label="Добавить"></button>
       </section>
-      <section class="cards">
+      <section class="cards" aria-label="фотографии пользователя">
         <ul class="list cards__list">
+          <!-- место размещения карточек -->
         </ul>
       </section>
     </main>
@@ -36,7 +37,7 @@
     </footer>
   </div>
   <!-- попап редактирования профля -->
-  <div class="popup popup_type_profile-input"> <!-- здесь class popup_opened - управляется в js (popup_type_profile-input,если будут ещё попапы)-->
+  <div class="popup popup_type_profile-input"> <!-- здесь class popup_opened - управляется в js -->
     <div class="popup__container">
       <button type="button" class="button popup__close-btn" aria-label="Закрыть"></button>
       <form class="popup__form" method="get" name="profileForm" novalidate>
@@ -49,7 +50,7 @@
       </form>
     </div>
   </div>
-  <!--  попап добавления карточки фотографии -->
+  <!-- попап добавления карточки фотографии -->
   <div class="popup popup_type_card-add"> <!-- popup_opened -->
     <div class="popup__container">
       <button type="button" class="button popup__close-btn" aria-label="Закрыть"></button>
@@ -67,10 +68,10 @@
   <div class="popup popup_type_open-img"> <!-- popup_opened -->
     <div class="popup__img-container">
       <button type="button" class="button popup__close-btn" aria-label="Закрыть"></button>
-      <figure class="popup__img-figure">
+      <figure class="popup__figure">
         <img class="popup__img" src="" alt="">
         <figcaption class="popup__img-caption"></figcaption>
-      </figure>      
+      </figure>
     </div>
   </div>
  
@@ -87,7 +88,7 @@
       </div>
     </li>
   </template>
-  <!-- template не отображается на странице HTML -->
+
   <script src="./scripts/cards.js"></script>
   <script src="./scripts/index.js"></script>
 </body>

@@ -23,6 +23,7 @@
 @import url(../blocks/cards/__list/cards__list.css);
 @import url(../blocks/card/card.css);
 @import url(../blocks/card/__img/card__img.css);
+@import url(../blocks/card/__img-btn/card__img-btn.css);
 @import url(../blocks/card/__trash-btn/card__trash-btn.css);
 @import url(../blocks/card/__caption/card__caption.css);
 @import url(../blocks/card/__text/card__text.css);
@@ -41,8 +42,7 @@
 @import url(../blocks/popup/__input/popup__input.css); /* общая сущность для инпутов */
 @import url(../blocks/popup/__submit-btn/popup__submit-btn.css);
 @import url(../blocks/popup/_opened/popup_opened.css);
-@import url(../blocks/card/__img-btn/card__img-btn.css);
 @import url(../blocks/popup/__img-container/popup__img-container.css);
-@import url(../blocks/popup/__img-figure/popup__img-figure.css);
+@import url(../blocks/popup/__figure/popup__figure.css);
 @import url(../blocks/popup/__img/popup__img.css);
 @import url(../blocks/popup/__img-caption/popup__img-caption.css);

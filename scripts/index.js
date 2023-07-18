@@ -25,21 +25,23 @@ const profileInput = document.querySelector('.profile__data')
 const profileInputName = profileInput.querySelector('.profile__name')
 const profileInputProfession = profileInput.querySelector('.profile__profession')
 
-function openPopupProfile() { //функция открытия окна редактирования(добавяем попапу класс popup_opened)
+//функция открытия окна редактирования(добавяем попапу класс popup_opened)
+function openPopupProfile() {
   popupProfileInput.classList.add('popup_opened');
   nameInput.value = profileInputName.textContent; // в поле для имени присваиваем атрибуту value значение существующего текста из профиля
   professionInput.value = profileInputProfession.textContent; // -"- то же для инпута о себе
 }
 
-function closePopupProfile() { //функция закрытия окна редактирования (крестик)
+//функция закрытия окна редактирования (крестик)
+function closePopupProfile() {
   popupProfileInput.classList.remove('popup_opened');
 }
 
-function formSubmitHandler(evt) {  //редактирование профиля
-  evt.preventDefault(); // метод отменяет стандартное событие перезагрузки страницы при отправке данных
-                        // Так мы можем определить свою логику отправки.
-                        // О том, как это делать, расскажем позже.
-  profileInputName.textContent = nameInput.value; // в заголовке для имени профиля присваиваем значение вновь введенного текста из попапа
+//присваивание новых данных профиля
+function formSubmitHandler(evt) {
+  // метод evt.preventDefault() отменяет стандартное событие перезагрузки страницы при отправке данных
+  evt.preventDefault();
+  profileInputName.textContent = nameInput.value; // в заголовке имени профиля присваиваем значение вновь введенного текста из попапа
   profileInputProfession.textContent = professionInput.value; //то же для текста о себе
   closePopupProfile() //закрытие попапа по окончанию функции
 }
@@ -52,26 +54,29 @@ buttonProfileEdit.addEventListener('click', openPopupProfile)
 buttonClosePopupProfile.addEventListener('click', closePopupProfile)
 
 
-//Открытие и закрытие попапа добавления картинки
+// Попап добавления картинки
+
 // находим кнопку + , попап +, кнопку закрытия попапа +, форму попапа
 const buttonAddCard = document.querySelector('.profile__add-btn')
 const popupAddCard = document.querySelector('.popup_type_card-add')
 const buttonClosePopupAddCard = popupAddCard.querySelector('.popup__close-btn')
 const formPopupAddCard = popupAddCard.querySelector('.popup__form');
 
-const openPopupAddCard = () => { //функция открытия окна добавления картинки (добавяем попапу класс popup_opened)
+//функция открытия и закрытия окна (добавяем и удаляем попапу класс popup_opened)
+const openPopupAddCard = () => {
   popupAddCard.classList.add('popup_opened');
 }
-
-const closePopupAddCard = () => { //функция закрытия окна добавления картинки (крестик)
+const closePopupAddCard = () => {
   popupAddCard.classList.remove('popup_opened');
 }
 
-//слушатель со значением клик на кнопки открытия и закрытия попапа +
+//слушатель со значением клик на кнопки (+) открытия и (Х) закрытия попапа
 buttonAddCard.addEventListener('click', openPopupAddCard)
 buttonClosePopupAddCard.addEventListener('click', closePopupAddCard)
 
-//Открытие и закрытие попапа просмотра картинки
+
+//Попап просмотра картинки
+
 // находим кнопку-картинку, попап просмотра картинки, контейнер с содержимым попапа, кнопку закрытия попапа картинки, картинку, подпись к картинке
 const popupImgOpen = document.querySelector('.popup_type_open-img')
 popupImgOpen.style = 'background-color: rgba(0, 0, 0, .9)'
@@ -80,13 +85,19 @@ const buttonClosePopupImgOpen = popupImgContainer.querySelector('.popup__close-b
 const imgPopup = popupImgContainer.querySelector('.popup__img')
 const captionImgPopup = popupImgContainer.querySelector('.popup__img-caption')
 
-const closePopupImgOpen = () => { //функция закрытия окна добавления картинки (крестик)
+/* функция открытия окна и слушатель - в теле функции создания новой карточки
+(нет карточки - нет попапа)*/
+
+//функция закрытия окна просмотра картинки
+const closePopupImgOpen = () => {
   popupImgOpen.classList.remove('popup_opened');
 }
-//слушатель со значением клик на кнопку закрытия попапа просмотра картинки
+//слушатель - клик на кнопку (Х) попапа просмотра картинки
 buttonClosePopupImgOpen.addEventListener('click', closePopupImgOpen)
 
-// функция создания шаблона новой карточки
+
+// функция создания новой карточки
+
 function createCard(name, link) {
   //находим место в разметке, куда будут добавляться карточки
   const listCards = document.querySelector('.cards__list');
@@ -123,16 +134,17 @@ function createCard(name, link) {
 }
 
 //функция добавления данных картинки
+
 function formSubmitCard(evt) {
-  evt.preventDefault(); // отмена стндартной перезагрузки
- 
+  // отмена стндартной перезагрузки
+  evt.preventDefault();
   // поля формы для названия картинки и ссылки на картинку
   const nameCard = formPopupAddCard.querySelector('.popup__input_card_name');
   const linkCard = formPopupAddCard.querySelector('.popup__input_card_link');
   if (nameCard.value === '' || linkCard.value === '')
     return  // выход из функции, если поля пустые (когда-нибудь я научусь "подсвечивать" поля обязательные к заполнению :)
 
-  //вызов функции создания шаблона
+  //вызов функции создания новой карточки
   createCard(nameCard.value, linkCard.value);
 
   nameCard.value = ''; //очистка полей
@@ -142,14 +154,3 @@ function formSubmitCard(evt) {
 
 // обработчик к форме - будет следить за событием “submit” - «отправка»
 formPopupAddCard.addEventListener('submit', formSubmitCard)
-
-
-
-
-
-
-
-
-
-
-
