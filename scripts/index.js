@@ -6,7 +6,7 @@
 const buttonProfileEdit = document.querySelector('.profile__edit-btn')
 const popupProfileInput = document.querySelector('.popup_type_profile-input')
 const buttonClosePopupProfile = popupProfileInput.querySelector('.popup__close-btn')
-const formPopup = popupProfileInput.querySelector('.popup__form')
+const formPopupProfile = popupProfileInput.querySelector('.popup__form')
 const nameInput = popupProfileInput.querySelector('.popup__input_field_name')
 const professionInput = popupProfileInput.querySelector('.popup__input_field_profession')
 
@@ -17,11 +17,13 @@ const profileInputProfession = profileInput.querySelector('.profile__profession'
 
 // Попап добавления картинки
 
-// находим кнопку + , попап +, кнопку закрытия попапа +, форму попапа
+// находим кнопку + , попап +, кнопку закрытия попапа +, форму попапа, поля формы для названия картинки и ссылки
 const buttonAddCard = document.querySelector('.profile__add-btn')
 const popupAddCard = document.querySelector('.popup_type_card-add')
 const buttonClosePopupAddCard = popupAddCard.querySelector('.popup__close-btn')
 const formPopupAddCard = popupAddCard.querySelector('.popup__form');
+const nameCard = formPopupAddCard.querySelector('.popup__input_card_name');
+const linkCard = formPopupAddCard.querySelector('.popup__input_card_link');
 
 //Попап просмотра картинки
 
@@ -33,6 +35,16 @@ const buttonClosePopupImgOpen = popupImgContainer.querySelector('.popup__close-b
 const imgPopup = popupImgContainer.querySelector('.popup__img')
 const captionImgPopup = popupImgContainer.querySelector('.popup__img-caption')
 
+// все кнопки-крестики (Х) с универсальным селектором popup__close
+const closeButtons = document.querySelectorAll('.popup__close-btn'); //`s` нужно обязательно, так как много кнопок
+
+//константы для создания новой карточки
+
+// место в разметке, куда будут добавляться карточки и шаблон новой карточки с содержимым
+const listCards = document.querySelector('.cards__list');
+const cardTemplate = document.querySelector ('#card-template').content
+
+//функции и обработчики
 
 //универсальная функция открытия попапа
 function openPopup(popup) {
@@ -44,27 +56,23 @@ function closePopup(popup) {
   popup.classList.remove('popup_opened');
 }
 
+//универсальный обработчик кнопок закрытия попапов (Х)
+closeButtons.forEach((button) => {
+  // находим 1 раз ближайший к крестику попап 
+  const popup = button.closest('.popup');
+  // устанавливаем обработчик закрытия на крестик
+  button.addEventListener('click', () => closePopup(popup));
+});
+
 /*функция присваивания значений "имени" и "о себе" из текущего профиля в 
 полях открывающегося окна редактирования*/
 function assignValueProfile() {
   nameInput.value = profileInputName.textContent; // в поле для имени присваиваем атрибуту value значение существующего текста из профиля
   professionInput.value = profileInputProfession.textContent; // -"- то же для инпута о себе
 }
-//было
-//функция открытия окна редактирования(добавяем попапу класс popup_opened)
-// function openPopupProfile() {
-//   popupProfileInput.classList.add('popup_opened');
-//   nameInput.value = profileInputName.textContent; // в поле для имени присваиваем атрибуту value значение существующего текста из профиля
-//   professionInput.value = profileInputProfession.textContent; // -"- то же для инпута о себе
-// }
 
-// //функция закрытия окна редактирования (крестик)
-// function closePopupProfile() {
-//   popupProfileInput.classList.remove('popup_opened');
-// }
-
-// функция "отправки"/присвоения новых данных профиля
-function formSubmitHandler(evt) {
+// функция присвоения новых введённых данных профиля странице
+function submitFormProfile(evt) {
   // метод evt.preventDefault() отменяет стандартное событие перезагрузки страницы при отправке данных
   evt.preventDefault();
   profileInputName.textContent = nameInput.value; // в заголовке имени профиля присваиваем значение вновь введенного текста из попапа
@@ -72,108 +80,81 @@ function formSubmitHandler(evt) {
   closePopup(popupProfileInput) //закрытие попапа по окончанию функции
 }
 
-// обработчик к форме: он будет следить за событием “submit” - «отправка» и запускать функцию редактиования профиля
-formPopup.addEventListener('submit', formSubmitHandler)
+// обработчик "отправки" новых введённых данных профиля
+formPopupProfile.addEventListener('submit', submitFormProfile)
 
-//слушатель со значением клик на кнопки открытия и закрытия попапа редактирования
-buttonProfileEdit.addEventListener('click', () => openPopup(popupProfileInput), assignValueProfile()) //openPopupProfile
-buttonClosePopupProfile.addEventListener('click', () => closePopup(popupProfileInput)) //closePopupProfile
+//слушатель клика на кнопку открытия попапа редактирования
+buttonProfileEdit.addEventListener('click', () => openPopup(popupProfileInput), assignValueProfile())
 
+//слушатель клика на кнопку (+) открытия попапа для добавления данных новых карточек
+buttonAddCard.addEventListener('click', () => openPopup(popupAddCard))
 
-
-
-//функция открытия и закрытия окна (добавяем и удаляем попапу класс popup_opened)
-const openPopupAddCard = () => {
-  popupAddCard.classList.add('popup_opened');
+// функция открытия попапа просмотра картинки 
+function openImg(name, link) {
+  openPopup(popupImgOpen);
+  imgPopup.src = link;
+  imgPopup.alt = name;
+  captionImgPopup.textContent = name;
 }
-const closePopupAddCard = () => {
-  popupAddCard.classList.remove('popup_opened');
-}
 
-//слушатель со значением клик на кнопки (+) открытия и (Х) закрытия попапа
-buttonAddCard.addEventListener('click', openPopupAddCard)
-buttonClosePopupAddCard.addEventListener('click', closePopupAddCard)
-
-
-
-
-/* функция открытия окна и слушатель - в теле функции создания новой карточки
+/* обработчик по клику на картинку - в теле функции создания новой карточки 
 (нет карточки - нет попапа)*/
 
-//функция закрытия окна просмотра картинки
-const closePopupImgOpen = () => {
-  popupImgOpen.classList.remove('popup_opened');
-}
-//слушатель - клик на кнопку (Х) попапа просмотра картинки
-buttonClosePopupImgOpen.addEventListener('click', closePopupImgOpen)
-
-
 // функция создания новой карточки
-
-function createCard(name, link) {
-  //находим место в разметке, куда будут добавляться карточки
-  const listCards = document.querySelector('.cards__list');
-  // выбрали шаблон карточки и его содержимое content
-  const cardTemplate = document.querySelector ('#card-template').content
-  // Чтобы создать новую карточку, содержимое шаблона нужно клонировать
-  const card = cardTemplate.querySelector('.card').cloneNode(true)
-  //заполнить содержимым
+function createCard(name, link) {  
+  // Чтобы создать новую карточку, нужно клонировать шаблон
+  card = cardTemplate.querySelector('.card').cloneNode(true)
+  //переменные кнопок
+  buttonLike = card.querySelector('.card__caption').querySelector('.card__like-btn')
+  buttonTrash = card.querySelector('.card__trash-btn')
+  buttonImg = card.querySelector('.card__img-btn')
+  
+  //заполняем клон шаблона содержимым
   card.querySelector('.card__img').src = link;
   card.querySelector('.card__img').alt = name;
   card.querySelector('.card__caption').querySelector('.card__text').textContent = name;
+  
+  // переключениe лайка в активное и неактивное состояние по клику на сердечко
+  buttonLike.addEventListener('click', (evt) => evt.target.classList.toggle('card__like-btn_active'));
 
-  // функция переключения кнопки лайка в активное и неактивное состояние
-  card.querySelector('.card__caption').querySelector('.card__like-btn').addEventListener('click', function(evt) {
-    evt.target.classList.toggle('card__like-btn_active');
-  });
+  // удаление карточки по клику на корзину  
+  buttonTrash.addEventListener('click', () => card.remove());
 
-  // функция удаления карточки
-  const buttonTrashCard = card.querySelector('.card__trash-btn');
-  buttonTrashCard.addEventListener('click', function() {
-    card.remove();
-  });
+  // просмотр картинки
+  buttonImg.addEventListener('click', () => openImg(name, link));
 
-  //функция открытия просмотра картинки
-  const buttonImg = card.querySelector('.card__img-btn');
-  buttonImg.addEventListener('click', function() {
-    popupImgOpen.classList.add('popup_opened');
-    imgPopup.src = link;
-    imgPopup.alt = name;
-    captionImgPopup.textContent = name;
-  });
-
-  listCards.prepend(card); //добавление карточки в начало списка на странице
+  return card;
 }
 
-//функция добавления данных картинки
+//функция добавления карточки в начало списка на странице
+function addNewCard(name, link) {
+  newCard = createCard(name, link);
+  listCards.prepend(newCard);
+}
 
-function formSubmitCard(evt) {
-  // отмена стндартной перезагрузки
+//функция "отправки"/присвоения данных карточки
+function submitFormCard(evt) {
+  // отмена стандартной перезагрузки
   evt.preventDefault();
-  // поля формы для названия картинки и ссылки на картинку
-  const nameCard = formPopupAddCard.querySelector('.popup__input_card_name');
-  const linkCard = formPopupAddCard.querySelector('.popup__input_card_link');
+  
   if (nameCard.value === '' || linkCard.value === '')
     return  // выход из функции, если поля пустые (когда-нибудь я научусь "подсвечивать" поля обязательные к заполнению :)
 
-  //вызов функции создания новой карточки
-  createCard(nameCard.value, linkCard.value);
+  //вызов функции добавления новой карточки в начало списка на страице
+  addNewCard(nameCard.value, linkCard.value);
 
-  nameCard.value = ''; //очистка полей
-  linkCard.value = '';
-  closePopupAddCard(); // закрытие попапа
+  evt.target.reset(); //очистка полей
+  closePopup(popupAddCard); // закрытие попапа
 }
 
 // обработчик к форме - будет следить за событием “submit” - «отправка»
-formPopupAddCard.addEventListener('submit', formSubmitCard)
-
+formPopupAddCard.addEventListener('submit', submitFormCard)
 
 // 6 карточек на первоначальной странице
-
-for (let i = initialCards.length - 1; i >= 0; i--){
-  createCard(initialCards[i].name, initialCards[i].link);
+for (let i = initialCards.length - 1; i >= 0; i--) {
+  addNewCard(initialCards[i].name, initialCards[i].link);
 }
 /* другой способ 
 initialCards.slice().reverse().forEach((element) => {
-  createCard(element.name, element.link);
+  addNewCard(element.name, element.link);
 })*/
