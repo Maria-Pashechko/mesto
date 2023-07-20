@@ -48,7 +48,7 @@ const cardTemplate = document.querySelector ('#card-template').content
 
 //универсальная функция открытия попапа
 function openPopup(popup) {
-    popup.classList.add('popup_opened');
+  popup.classList.add('popup_opened');
 }
 
 //универсальная функция закрытия попапа
@@ -103,11 +103,11 @@ function openImg(name, link) {
 // функция создания новой карточки
 function createCard(name, link) {  
   // Чтобы создать новую карточку, нужно клонировать шаблон
-  card = cardTemplate.querySelector('.card').cloneNode(true)
+  const card = cardTemplate.querySelector('.card').cloneNode(true)
   //переменные кнопок
-  buttonLike = card.querySelector('.card__caption').querySelector('.card__like-btn')
-  buttonTrash = card.querySelector('.card__trash-btn')
-  buttonImg = card.querySelector('.card__img-btn')
+  const buttonLike = card.querySelector('.card__caption').querySelector('.card__like-btn')
+  const buttonTrash = card.querySelector('.card__trash-btn')
+  const buttonImg = card.querySelector('.card__img-btn')
   
   //заполняем клон шаблона содержимым
   card.querySelector('.card__img').src = link;
@@ -128,7 +128,7 @@ function createCard(name, link) {
 
 //функция добавления карточки в начало списка на странице
 function addNewCard(name, link) {
-  newCard = createCard(name, link);
+  const newCard = createCard(name, link);
   listCards.prepend(newCard);
 }
 
