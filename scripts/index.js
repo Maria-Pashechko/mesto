@@ -1,5 +1,8 @@
 // константы
 
+//все попапы
+const popupOverlays = Array.from(document.querySelectorAll('.popup'));
+
 // Попап редактирования профиля
 
 // находим кнопку редактирования профиля, попап, кнопку закрытия попапа, форму и поля формы попапа (имя и о себе)
@@ -44,11 +47,27 @@ const closeButtons = document.querySelectorAll('.popup__close-btn'); //`s` ну�
 const listCards = document.querySelector('.cards__list');
 const cardTemplate = document.querySelector ('#card-template').content
 
+//константы для валидации форм
+const validationConfig = {
+  //селекторы - ключам задаются классы, по которым искать элементы в JS
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__submit-btn',
+  inactiveButtonClass: 'popup__disabled-btn',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible'
+};
+
 //функции и обработчики
 
 //универсальная функция открытия попапа
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  window.addEventListener('keydown', (evt) => {
+    if(evt.key === 'Escape') {
+      closePopup(popup);
+    }
+  })
 }
 
 //универсальная функция закрытия попапа
@@ -63,6 +82,20 @@ closeButtons.forEach((button) => {
   // устанавливаем обработчик закрытия на крестик
   button.addEventListener('click', () => closePopup(popup));
 });
+
+//закрытие попапов по клику на overlay
+popupOverlays.forEach(popupOverlay => {
+  popupOverlay.addEventListener('click', (evt) => {
+    if(evt.target === popupOverlay) {
+      closePopup(popupOverlay);
+    }
+  })
+  /*window.addEventListener('keydown', (evt) => {
+    if(evt.key === 'Escape') {
+      closePopup(popupOverlay);
+    }
+  })*/
+})
 
 /*функция присваивания значений "имени" и "о себе" из текущего профиля в 
 полях открывающегося окна редактирования*/
@@ -138,7 +171,7 @@ function submitFormCard(evt) {
   evt.preventDefault();
   
   if (nameCard.value === '' || linkCard.value === '')
-    return  // выход из функции, если поля пустые (когда-нибудь я научусь "подсвечивать" поля обязательные к заполнению :)
+    return  // выход из функции, если поля пустые
 
   //вызов функции добавления новой карточки в начало списка на страице
   addNewCard(nameCard.value, linkCard.value);
@@ -158,3 +191,16 @@ for (let i = initialCards.length - 1; i >= 0; i--) {
 initialCards.slice().reverse().forEach((element) => {
   addNewCard(element.name, element.link);
 })*/
+
+//вызов функции валидации форм
+enableValidation(validationConfig);
+
+/*
+forms.forEach((form) => {
+  form.addEventListener('keydown', evt => { 
+    if (evt.key === 'Escape'){
+      alert('Escape press')
+    }
+  });
+});
+*/
