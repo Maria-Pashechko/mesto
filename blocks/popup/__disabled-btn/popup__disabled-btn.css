@@ -7,4 +7,5 @@
 
 .popup__disabled-btn:hover {
   cursor: default;
+  background-color: #fff;
 }
