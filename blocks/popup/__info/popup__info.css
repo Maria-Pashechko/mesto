@@ -1,12 +1,11 @@
 .popup__info {
   display: flex;
   flex-direction: column;
-  row-gap: 30px; /* пространство между инпутами по макету 30px */
-  margin: 45px 0 50px;
+  margin: 54px 0 20px;
 }
 
 @media screen and (max-width: 767px) {
   .popup__info {
-    margin: 75px 0 45px;
+    margin: 75px 0 15px;
   }
 }

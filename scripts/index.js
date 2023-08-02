@@ -63,6 +63,7 @@ const validationConfig = {
 //универсальная функция открытия попапа
 function openPopup(popup) {
   popup.classList.add('popup_opened');
+  //закрытие попап по клику на клавишу Esc
   window.addEventListener('keydown', (evt) => {
     if(evt.key === 'Escape') {
       closePopup(popup);
@@ -90,11 +91,6 @@ popupOverlays.forEach(popupOverlay => {
       closePopup(popupOverlay);
     }
   })
-  /*window.addEventListener('keydown', (evt) => {
-    if(evt.key === 'Escape') {
-      closePopup(popupOverlay);
-    }
-  })*/
 })
 
 /*функция присваивания значений "имени" и "о себе" из текущего профиля в 
@@ -194,13 +190,3 @@ initialCards.slice().reverse().forEach((element) => {
 
 //вызов функции валидации форм
 enableValidation(validationConfig);
-
-/*
-forms.forEach((form) => {
-  form.addEventListener('keydown', evt => { 
-    if (evt.key === 'Escape'){
-      alert('Escape press')
-    }
-  });
-});
-*/
