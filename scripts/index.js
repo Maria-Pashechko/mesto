@@ -1,3 +1,7 @@
+import initialCards from './cards.js';
+import Card from './Card.js';
+import FormValidator from './FormValidator.js';
+
 // константы
 
 //все попапы
@@ -8,7 +12,6 @@ const popups = document.querySelectorAll('.popup')
 // находим кнопку редактирования профиля, попап, кнопку закрытия попапа, форму и поля формы попапа (имя и о себе)
 const buttonProfileEdit = document.querySelector('.profile__edit-btn')
 const popupProfileInput = document.querySelector('.popup_type_profile-input')
-const buttonClosePopupProfile = popupProfileInput.querySelector('.popup__close-btn')
 const formPopupProfile = document.forms['profile-form']; //по атрибуту name или .querySelector('.popup__form')
 const nameInput = popupProfileInput.querySelector('.popup__input_field_name')
 const professionInput = popupProfileInput.querySelector('.popup__input_field_profession')
@@ -23,26 +26,14 @@ const profileInputProfession = profileInput.querySelector('.profile__profession'
 // находим кнопку + , попап +, кнопку закрытия попапа +, форму попапа, поля формы для названия картинки и ссылки
 const buttonAddCard = document.querySelector('.profile__add-btn')
 const popupAddCard = document.querySelector('.popup_type_card-add')
-const buttonClosePopupAddCard = popupAddCard.querySelector('.popup__close-btn')
 const formPopupAddCard = document.forms['card-form']; //по атрибуту name или .querySelector('.popup__form');
 const nameCard = formPopupAddCard.querySelector('.popup__input_card_name')
 const linkCard = formPopupAddCard.querySelector('.popup__input_card_link')
 
-//Попап просмотра картинки
-
-// находим кнопку-картинку, попап просмотра картинки, контейнер с содержимым попапа, кнопку закрытия попапа картинки, картинку, подпись к картинке
-const popupImgOpen = document.querySelector('.popup_type_open-img')
-popupImgOpen.style = 'background-color: rgba(0, 0, 0, .9)'
-const popupImgContainer = popupImgOpen.querySelector ('.popup__img-container')
-const buttonClosePopupImgOpen = popupImgContainer.querySelector('.popup__close-btn')
-const imgPopup = popupImgContainer.querySelector('.popup__img')
-const captionImgPopup = popupImgContainer.querySelector('.popup__img-caption')
-
 //константы для создания новой карточки
 
-// место в разметке, куда будут добавляться карточки и шаблон новой карточки с содержимым
+// место в разметке, куда будут добавляться карточки
 const listCards = document.querySelector('.cards__list')
-const cardTemplate = document.querySelector ('#card-template').content
 
 //константы для валидации форм
 const validationConfig = {
@@ -116,48 +107,11 @@ buttonProfileEdit.addEventListener('click', () => openPopup(popupProfileInput), 
 //слушатель клика на кнопку (+) открытия попапа для добавления данных новых карточек
 buttonAddCard.addEventListener('click', () => openPopup(popupAddCard))
 
-// функция открытия попапа просмотра картинки 
-function openImg(name, link) {
-  openPopup(popupImgOpen);
-  imgPopup.src = link;
-  imgPopup.alt = name;
-  captionImgPopup.textContent = name;
-}
-
-/* обработчик по клику на картинку - в теле функции создания новой карточки 
-(нет карточки - нет попапа)*/
-
-// функция создания новой карточки
-function createCard(name, link) {  
-  // Чтобы создать новую карточку, нужно клонировать шаблон
-  const card = cardTemplate.querySelector('.card').cloneNode(true)
-  const cardImg = card.querySelector('.card__img')
-  //переменные кнопок
-  const buttonLike = card.querySelector('.card__like-btn')
-  const buttonTrash = card.querySelector('.card__trash-btn')
-  const buttonImg = card.querySelector('.card__img-btn')
-  
-  //заполняем клон шаблона содержимым
-  cardImg.src = link;
-  cardImg.alt = name;
-  card.querySelector('.card__text').textContent = name;
-  
-  // переключениe лайка в активное и неактивное состояние по клику на сердечко
-  buttonLike.addEventListener('click', (evt) => evt.target.classList.toggle('card__like-btn_active'));
-
-  // удаление карточки по клику на корзину  
-  buttonTrash.addEventListener('click', () => card.remove());
-
-  // просмотр картинки
-  buttonImg.addEventListener('click', () => openImg(name, link));
-
-  return card;
-}
-
 //функция добавления карточки в начало списка на странице
-function addNewCard(name, link) {
-  const newCard = createCard(name, link);
-  listCards.prepend(newCard);
+function addNewCard(item) {
+  const newCard = new Card(item, '.card-template_type_default');
+  const card = newCard.generateCard();
+  listCards.prepend(card);
 }
 
 //функция "отправки"/присвоения данных карточки
@@ -168,9 +122,14 @@ function submitFormCard(evt) {
   if (nameCard.value === '' || linkCard.value === '')
     return  // выход из функции, если поля пустые
 
-  //вызов функции добавления новой карточки в начало списка на страице
-  addNewCard(nameCard.value, linkCard.value);
-
+  //вызов функции добавления новой карточки в начало списка на странице
+  addNewCard(
+    {
+      name: nameCard.value,
+      link: linkCard.value
+    }
+  ); 
+ 
   evt.target.reset(); //очистка полей
   closePopup(popupAddCard); // закрытие попапа
 }
@@ -179,13 +138,14 @@ function submitFormCard(evt) {
 formPopupAddCard.addEventListener('submit', submitFormCard)
 
 // 6 карточек на первоначальной странице
-for (let i = initialCards.length - 1; i >= 0; i--) {
-  addNewCard(initialCards[i].name, initialCards[i].link);
-}
-/* другой способ 
-initialCards.slice().reverse().forEach((element) => {
-  addNewCard(element.name, element.link);
-})*/
+initialCards.reverse().forEach((item) => addNewCard(item));
 
 //вызов функции валидации форм
-enableValidation(validationConfig);
+
+//массив всех форм
+const forms = Array.from(document.querySelectorAll(validationConfig.formSelector));
+
+forms.forEach(form => {
+  const validator = new FormValidator(validationConfig, form);
+  validator.enableValidation();
+})
