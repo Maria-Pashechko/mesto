@@ -8,6 +8,7 @@ class Card {
    //клонирование шаблона
   _getTemplate() {
     const cardElement = document.querySelector(this._templateSelector).content.querySelector('.card').cloneNode(true);
+    
     return cardElement;
   }
   
@@ -52,8 +53,8 @@ class Card {
     this._popupImgOpen.classList.add('popup_opened');
     this._imgPopup.src = this._link;
     this._imgPopup.alt = this._name;
-    this._captionImgPopup.textContent = this._name;    
-  }                
+    this._captionImgPopup.textContent = this._name;
+  }
 
   //слушатели событий
   _setEventListeners() {
@@ -62,14 +63,13 @@ class Card {
     this._buttonImg.addEventListener('click', () => this. _openImg());
   }
 
-  //метод (публичный) возвращает элемент карточки 
+  //метод (публичный) возвращает элемент карточки
   generateCard() {
     this._prepareCard();
     this._setEventListeners();
     
     return this._card;
   }
-
 }
 
 export default Card;

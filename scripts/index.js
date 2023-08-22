@@ -144,7 +144,7 @@ initialCards.reverse().forEach((item) => addNewCard(item));
 
 //массив всех форм
 const forms = Array.from(document.querySelectorAll(validationConfig.formSelector));
-
+//создание объекта валидации и вызов функции валидации формы для каждой формы
 forms.forEach(form => {
   const validator = new FormValidator(validationConfig, form);
   validator.enableValidation();

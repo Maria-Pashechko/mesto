@@ -2,7 +2,7 @@ class FormValidator {
   constructor(config, formElement) {
     this._config = config;
     this._formElement = formElement;
-  };
+  }
 
   _showInputError(input) {
     input.classList.add(this._config.inputErrorClass);
@@ -31,43 +31,61 @@ class FormValidator {
     return this._inputs.some(input => !input.validity.valid);
   }
 
-  //состояние disable кнопки submit
+  //"регистрация" элементов валидации каждой формы (всех инпутов и кнопки submit)
+  _getForm() {
+    this._inputs = Array.from(this._formElement.querySelectorAll(this._config.inputSelector));
+    this._btnSubmit = this._formElement.querySelector(this._config.submitButtonSelector);
+  }
+
+  //состояние disable (скрыта) кнопки submit
   _disableButton() {
     this._btnSubmit.classList.add(this._config.inactiveButtonClass);
     this._btnSubmit.disabled = true;
   }
+
+  //состояние enable (видимости) кнопки submit
+  _enableButton() {
+    this._btnSubmit.classList.remove(this._config.inactiveButtonClass);
+    this._btnSubmit.disabled = false;
+  }
  
-  //переключатель стилей активной и неактивной кнопки submit
+  //переключатель стилей активной/неактивной кнопки submit в зависимости от валидности/инвалидности импутов
   _toggleButtonState() {
     if (this._hasInvalidInput()) {
       this._disableButton();
     } else {
-      this._btnSubmit.classList.remove(this._config.inactiveButtonClass);
-      this._btnSubmit.disabled = false;
+      this._enableButton();
     }
   }
 
-  enableValidation() {
-    this._inputs = Array.from(this._formElement.querySelectorAll(this._config.inputSelector));
-    this._btnSubmit = this._formElement.querySelector(this._config.submitButtonSelector);
-    
-    //disabled в начале при открытии попапа с пустыми полями    
-    this._toggleButtonState();
-    
+  //обработчик перезагрузки формы
+  _resetForm() {
     this._formElement.addEventListener('reset', () => {
       this._disableButton();  
-    })
+    });
+  }
 
-    //обработчик события изменения текста инпутов
-    this._inputs.forEach(input => {
-      input.addEventListener('input', () => {
-        this._isValid(input);
-        //переключатель стилей кнопки submit в зависимости от валидности/инвалидности импутов
-        this._toggleButtonState();
-      })
-    })
+  //обработчик изменения текста инпута
+  _checkInput(input) {
+    input.addEventListener('input', () => {
+      this._isValid(input);
+      this._toggleButtonState();
+    });
+  }
+
+  enableValidation() {
+    // "регистрация" всех инпутов и кнопки submit каждой формы
+    this._getForm();
+    
+    // disabled кнопки submit при первом открытии попапа с пустыми полями    
+    this._toggleButtonState();
+    
+    // обработчик события перезагрузки формы (disable кнопки submit)
+    this._resetForm();
+
+    // на каждый инпут вешаем обработчик изменения текста инпута
+    this._inputs.forEach(input => this._checkInput(input));
   }
 }
-
 
 export default FormValidator;
