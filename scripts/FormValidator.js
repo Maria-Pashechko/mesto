@@ -31,8 +31,8 @@ class FormValidator {
     return this._inputs.some(input => !input.validity.valid);
   }
 
-  //"регистрация" элементов валидации каждой формы (всех инпутов и кнопки submit)
-  _getForm() {
+  //"поиск" элементов валидации каждой формы (всех инпутов и кнопки submit)
+  _findFormElemnts() {
     this._inputs = Array.from(this._formElement.querySelectorAll(this._config.inputSelector));
     this._btnSubmit = this._formElement.querySelector(this._config.submitButtonSelector);
   }
@@ -59,14 +59,14 @@ class FormValidator {
   }
 
   //обработчик перезагрузки формы
-  _resetForm() {
+  _initResetForm() {
     this._formElement.addEventListener('reset', () => {
       this._disableButton();  
     });
   }
 
   //обработчик изменения текста инпута
-  _checkInput(input) {
+  _initCheckInput(input) {
     input.addEventListener('input', () => {
       this._isValid(input);
       this._toggleButtonState();
@@ -74,17 +74,17 @@ class FormValidator {
   }
 
   enableValidation() {
-    // "регистрация" всех инпутов и кнопки submit каждой формы
-    this._getForm();
+    // "поиск" всех инпутов и кнопки submit каждой формы
+    this._findFormElemnts();
     
     // disabled кнопки submit при первом открытии попапа с пустыми полями    
     this._toggleButtonState();
     
     // обработчик события перезагрузки формы (disable кнопки submit)
-    this._resetForm();
+    this._initResetForm();
 
     // на каждый инпут вешаем обработчик изменения текста инпута
-    this._inputs.forEach(input => this._checkInput(input));
+    this._inputs.forEach(input => this._initCheckInput(input));
   }
 }
 

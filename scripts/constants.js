@@ -31,4 +31,15 @@ const initialCards = [
   }
 ];
 
-export default initialCards
+//константы для валидации форм
+const validationConfig = {
+  //селекторы - ключам задаются классы, по которым искать элементы в JS
+  formSelector: '.popup__form',
+  inputSelector: '.popup__input',
+  submitButtonSelector: '.popup__submit-btn',
+  inactiveButtonClass: 'popup__disabled-btn',
+  inputErrorClass: 'popup__input_type_error',
+  errorClass: 'popup__error_visible'
+};
+
+export {initialCards, validationConfig}

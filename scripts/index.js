@@ -1,4 +1,4 @@
-import initialCards from './cards.js';
+import {initialCards, validationConfig} from './constants.js';
 import Card from './Card.js';
 import FormValidator from './FormValidator.js';
 
@@ -30,21 +30,18 @@ const formPopupAddCard = document.forms['card-form']; //по атрибуту na
 const nameCard = formPopupAddCard.querySelector('.popup__input_card_name')
 const linkCard = formPopupAddCard.querySelector('.popup__input_card_link')
 
+//Попап просмотра картинки
+
+//разметка попапа просмотра картинки
+const popupImgOpen = document.querySelector('.popup_type_open-img');    
+const popupImgContainer = popupImgOpen.querySelector ('.popup__img-container');
+const imgPopup = popupImgContainer.querySelector('.popup__img');
+const captionImgPopup = popupImgContainer.querySelector('.popup__img-caption');
+
 //константы для создания новой карточки
 
 // место в разметке, куда будут добавляться карточки
 const listCards = document.querySelector('.cards__list')
-
-//константы для валидации форм
-const validationConfig = {
-  //селекторы - ключам задаются классы, по которым искать элементы в JS
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  submitButtonSelector: '.popup__submit-btn',
-  inactiveButtonClass: 'popup__disabled-btn',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'popup__error_visible'
-};
 
 //функции и обработчики
 
@@ -73,10 +70,8 @@ function closeByEscape(evt) {
 //универсальный обработчик закрытия попапов на кнопки X и overlay
 popups.forEach((popup) => {
   popup.addEventListener('mousedown', (evt) => {
-    if (evt.target.classList.contains('popup_opened')) { // условие для overlay
-      closePopup(popup);
-    }
-    if (evt.target.classList.contains('popup__close-btn')) { // условие для кнопок Х
+    if (evt.target.classList.contains('popup_opened') || 
+        evt.target.classList.contains('popup__close-btn')) {
       closePopup(popup);
     }
   })
@@ -84,7 +79,7 @@ popups.forEach((popup) => {
 
 /*функция присваивания значений "имени" и "о себе" из текущего профиля в 
 полях открывающегося окна редактирования*/
-function assignValueProfile() {
+function setPopupValuesFromProfile() {
   nameInput.value = profileInputName.textContent; // в поле для имени присваиваем атрибуту value значение существующего текста из профиля
   professionInput.value = profileInputProfession.textContent; // -"- то же для инпута о себе
 }
@@ -102,14 +97,22 @@ function submitFormProfile(evt) {
 formPopupProfile.addEventListener('submit', submitFormProfile)
 
 //слушатель клика на кнопку открытия попапа редактирования
-buttonProfileEdit.addEventListener('click', () => openPopup(popupProfileInput), assignValueProfile())
+buttonProfileEdit.addEventListener('click', () => openPopup(popupProfileInput), setPopupValuesFromProfile())
 
 //слушатель клика на кнопку (+) открытия попапа для добавления данных новых карточек
 buttonAddCard.addEventListener('click', () => openPopup(popupAddCard))
 
+// функция открытия окна с картинкой
+const openPopupImg = (name, link) => { 
+  imgPopup.src = link;
+  imgPopup.alt = name;
+  captionImgPopup.textContent = name; 
+  openPopup(popupImgOpen);  
+}
+
 //функция добавления карточки в начало списка на странице
 function addNewCard(item) {
-  const newCard = new Card(item, '.card-template_type_default');
+  const newCard = new Card(item, '.card-template_type_default', openPopupImg);
   const card = newCard.generateCard();
   listCards.prepend(card);
 }
@@ -118,9 +121,6 @@ function addNewCard(item) {
 function submitFormCard(evt) {
   // отмена стандартной перезагрузки
   evt.preventDefault();
-  
-  if (nameCard.value === '' || linkCard.value === '')
-    return  // выход из функции, если поля пустые
 
   //вызов функции добавления новой карточки в начало списка на странице
   addNewCard(
@@ -143,9 +143,7 @@ initialCards.reverse().forEach((item) => addNewCard(item));
 //вызов функции валидации форм
 
 //массив всех форм
-const forms = Array.from(document.querySelectorAll(validationConfig.formSelector));
-//создание объекта валидации и вызов функции валидации формы для каждой формы
-forms.forEach(form => {
+document.querySelectorAll(validationConfig.formSelector).forEach(form => {
   const validator = new FormValidator(validationConfig, form);
   validator.enableValidation();
-})
+});
