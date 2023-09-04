@@ -1,6 +1,7 @@
 import {initialCards, validationConfig} from './constants.js';
 import Card from './Card.js';
 import FormValidator from './FormValidator.js';
+import Section from './Section.js'
 
 // константы
 
@@ -41,7 +42,7 @@ const captionImgPopup = popupImgContainer.querySelector('.popup__img-caption');
 //константы для создания новой карточки
 
 // место в разметке, куда будут добавляться карточки
-const listCards = document.querySelector('.cards__list')
+const cardsListSelector = document.querySelector('.cards__list')
 
 //функции и обработчики
 
@@ -111,11 +112,28 @@ const openPopupImg = (name, link) => {
 }
 
 //функция добавления карточки в начало списка на странице
-function addNewCard(item) {
-  const newCard = new Card(item, '.card-template_type_default', openPopupImg);
-  const card = newCard.generateCard();
-  listCards.prepend(card);
-}
+/*function addNewCard(item) {
+  const card = new Card(item, '.card-template_type_default', openPopupImg);
+  const cardElement = card.generateCard();
+  cardsListSelector.prepend(cardElement);
+}*/
+
+const cardList = new Section({
+  items: initialCards,
+  renderer: (cardItem) => {
+    //инструкция по работе с Card (или другая инструкция для другого массива)
+  const card = new Card(cardItem, '.card-template_type_default', openPopupImg);
+  const cardElement = card.generateCard();
+  cardList.addItem(cardElement);
+  }},
+  '.cards__list'
+);
+cardList.renderItems();
+
+/*событие отправки формы addEventListener('submit', () => {
+  cardList.renderItems();
+});*/
+
 
 //функция "отправки"/присвоения данных карточки
 function submitFormCard(evt) {
@@ -138,7 +156,7 @@ function submitFormCard(evt) {
 formPopupAddCard.addEventListener('submit', submitFormCard)
 
 // 6 карточек на первоначальной странице
-initialCards.reverse().forEach((item) => addNewCard(item));
+//initialCards.forEach((item) => addNewCard(item));
 
 //вызов функции валидации форм
 
