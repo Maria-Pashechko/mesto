@@ -1,9 +1,9 @@
 class Card {
-  constructor(data, templateSelector, popupCallback) {
+  constructor(data, templateSelector, handleCardClick) { //popupCallback
     this._name = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
-    this._popupCallback = popupCallback;
+    this._handleCardClick = handleCardClick;
   }
 
    //клонирование шаблона
@@ -43,7 +43,7 @@ class Card {
   _setEventListeners() {
     this._buttonLike.addEventListener('click', () => this._handleLikeBtn());
     this._buttonTrash.addEventListener('click', () => this._handleTrashBtn());
-    this._buttonImg.addEventListener('click', () => this._popupCallback(this._name, this._link));
+    this._buttonImg.addEventListener('click', () => this._handleCardClick(this._name, this._link));
   }
 
   //метод (публичный) возвращает элемент карточки
