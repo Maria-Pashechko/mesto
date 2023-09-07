@@ -32,7 +32,7 @@ class FormValidator {
   }
 
   //"поиск" элементов валидации каждой формы (всех инпутов и кнопки submit)
-  _findFormElemnts() {
+  _findFormElements() {
     this._inputs = Array.from(this._formElement.querySelectorAll(this._config.inputSelector));
     this._btnSubmit = this._formElement.querySelector(this._config.submitButtonSelector);
   }
@@ -75,7 +75,7 @@ class FormValidator {
 
   enableValidation() {
     // "поиск" всех инпутов и кнопки submit каждой формы
-    this._findFormElemnts();
+    this._findFormElements();
     
     // disabled кнопки submit при первом открытии попапа с пустыми полями    
     this._toggleButtonState();

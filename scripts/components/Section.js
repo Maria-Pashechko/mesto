@@ -12,7 +12,7 @@ export default class Section { //получает разметку через ф
       
     //метод, который отвечает за отрисовку всех элементов
     renderItems() {
-      //перебор массива методом forEach
+      //перебор массива
       this._items.reverse().forEach(item => {
         //Отрисовка каждого отдельного элемента функцией renderer.
         this._renderer(item);
