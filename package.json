@@ -1,0 +1,17 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "educational project work Mesto",
+  "main": "index.js",
+  "scripts": {
+    "build": "rm -rf dist && webpack",
+    "dev": "webpack serve"
+  },
+  "author": "Maria Pashechko",
+  "license": "ISC",
+  "devDependencies": {
+    "webpack": "^5.88.2",
+    "webpack-cli": "^5.1.4",
+    "webpack-dev-server": "^4.15.1"
+  }
+}
