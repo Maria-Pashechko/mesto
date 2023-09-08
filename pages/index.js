@@ -24,8 +24,7 @@ const popupFormProfileInput = new PopupWithForm(
 );
 popupFormProfileInput.setEventListeners();
 buttonProfileEdit.addEventListener('click', () => {
-  userProfile.setUserInfoFromPageToPopup();
-  popupFormProfileInput.open();
+  popupFormProfileInput.openWithData(userProfile.getUserInfo());
 });
 
 //попап форма добавления новой карточки

@@ -21,6 +21,19 @@ export default class PopupWithForm extends Popup {
     return inputValues;
   }
 
+  openWithData(obj){
+    
+    this._inputs.forEach(input => {
+
+      const objValue = obj[input.name];
+      if (objValue != null){
+        input.value = objValue;
+      }
+    });
+
+    super.open()
+  }
+
   close() {
     super.close();
 

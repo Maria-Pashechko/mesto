@@ -1,5 +1,3 @@
-import {popupInputName, popupInputProfession} from '../utils/constants.js';
-
 export default class UserInfo {
   constructor(selectorUserName, selectorUserProfession) {
     this._nameFromPage = selectorUserName;
@@ -19,13 +17,5 @@ export default class UserInfo {
     dataPopupUserInfo.profession = this._professionFromPage.textContent;
 
     return dataPopupUserInfo;
-  }
-
-  setUserInfoFromPageToPopup() {
-    //приняли данные полей страницы
-    const obj = this.getUserInfo();
-    //присвоили инпутам данные со страницы
-    popupInputName.value = obj.name;
-    popupInputProfession.value = obj.profession;
   }
 }

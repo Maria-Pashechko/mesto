@@ -47,8 +47,6 @@ export const validationConfig = {
 // Попап редактирования профиля
 export const popupProfileInput = document.querySelector('.popup_type_profile-input') 
 export const buttonProfileEdit = document.querySelector('.profile__edit-btn')
-export const popupInputName = document.querySelector('.popup__input_field_name') //UserInfo
-export const popupInputProfession = document.querySelector('.popup__input_field_profession')//UserInfo
 // данные профиля на странице
 export const profileInputName = document.querySelector('.profile__name')
 export const profileInputProfession = document.querySelector('.profile__profession')
