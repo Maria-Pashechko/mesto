@@ -2,11 +2,11 @@
   max-width: 880px;
   display: flex;
   flex-direction: column;
-  justify-content: start;
+  justify-content: flex-start;
   box-sizing: border-box;
   margin: 0;
   padding: 45px 0 0;
-  border-bottom: 1px solid rgba(84, 84, 84, .7); /*по макету color HEX #545454 (пропустила этот момент :\ ) = RGBA 84 84 84*/ 
+  border-bottom: 1px solid rgba(84, 84, 84, .7); /*по макету color HEX #545454 = RGBA 84 84 84*/ 
 }
 
 @media screen and (max-width: 767px) {
