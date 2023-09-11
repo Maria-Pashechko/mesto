@@ -1,13 +1,13 @@
 import {initialCards, validationConfig,
         popupProfileInput, buttonProfileEdit,
         profileInputName, profileInputProfession, popupAddCard, buttonAddCard,
-        popupImgOpen, imgPopup, captionImgPopup} from '../scripts/utils/constants.js';
-import Card from '../scripts/components/Card.js';
-import FormValidator from '../scripts/components/FormValidator.js';
-import UserInfo from '../scripts/components/UserInfo.js';
-import Section from '../scripts/components/Section.js'
-import PopupWithImage from '../scripts/components/PopupWithImage.js';
-import PopupWithForm from '../scripts/components/PopupWithForm.js';
+        popupImgOpen, imgPopup, captionImgPopup} from './scripts/utils/constants.js';
+import Card from './scripts/components/Card.js';
+import FormValidator from './scripts/components/FormValidator.js';
+import UserInfo from './scripts/components/UserInfo.js';
+import Section from './scripts/components/Section.js'
+import PopupWithImage from './scripts/components/PopupWithImage.js';
+import PopupWithForm from './scripts/components/PopupWithForm.js';
 
 //вызов функции валидации форм для каждой формы
 document.querySelectorAll(validationConfig.formSelector).forEach(form => {

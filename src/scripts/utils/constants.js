@@ -2,24 +2,18 @@ export const initialCards = [
   {
     name: 'Архыз',
     link: './images/cards-img/arkhyz.jpg'
-    // name: 'Архыз',
-    // link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
   },
   {
-    name: 'Челябинская область',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    name: 'Ленинградская область',
+    link: './images/cards-img/lenobl.jpg'
   },
   {
     name: 'Село Гамсутль (республика Дагестан)',
     link: './images/cards-img/gamsutl.jpg'
-    // name: 'Иваново',
-    // link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
   },
   {
     name: 'Вулкан Горелый',
     link: './images/cards-img/gorely.jpg'
-    // name: 'Камчатка',
-    // link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
   },
   {
     name: 'Холмогорский район',
