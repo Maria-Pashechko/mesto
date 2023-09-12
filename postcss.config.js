@@ -2,7 +2,7 @@ const autoprefixer = require('autoprefixer');
 const cssnano = require('cssnano');
 
 module.exports = {
-  // подключите плагины к PostCSS
+  // плагины к PostCSS
   plugins: [
     // подключите autoprefixer
     autoprefixer,

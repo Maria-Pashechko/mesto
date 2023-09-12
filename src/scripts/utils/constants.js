@@ -1,19 +1,24 @@
+import arkhyzImage from '../../images/cards-img/arkhyz.jpg';
+import lenoblImage from '../../images/cards-img/lenobl.jpg';
+import gamsutlImage from '../../images/cards-img/gamsutl.jpg';
+import gorelyImage from '../../images/cards-img/gorely.jpg';
+
 export const initialCards = [
   {
     name: 'Архыз',
-    link: './images/cards-img/arkhyz.jpg'
+    link: arkhyzImage
   },
   {
     name: 'Ленинградская область',
-    link: './images/cards-img/lenobl.jpg'
+    link: lenoblImage
   },
   {
     name: 'Село Гамсутль (республика Дагестан)',
-    link: './images/cards-img/gamsutl.jpg'
+    link: gamsutlImage
   },
   {
     name: 'Вулкан Горелый',
-    link: './images/cards-img/gorely.jpg'
+    link: gorelyImage
   },
   {
     name: 'Холмогорский район',

@@ -8,17 +8,17 @@
   <meta name="keywords" content="личная страница, интересные места, Россия, Карачаевск, Архыз, Вулкан Горелый, Гамсутль">
   <meta name="description" content="одностраничный сайт, имеющий пользовательский профиль, предназначен для размещения и удаления фотографий с подписью, возможностью поставить like, редактировать профиль (учебная проектная работа в Яндекс.Практикум).">
   <meta name="author" content="Мария Пашечко">
-  <link rel="icon" href="./images/favicon-m.ico" type="image/x-icon">
-  <link rel="stylesheet" href="./pages/index.css">
+  <link rel="icon" href="<%=require('./images/favicon-m.ico')%>" type="image/x-icon">
+  
 </head>
 <body class="root">
   <div class="page">
     <header class="header">
-      <img class="header__logo-mesto" src="./images/logo-mesto.svg" alt="Место">
+      <img class="header__logo-mesto" src="<%=require('./images/logo-mesto.svg')%>" alt="Место">
     </header>
     <main class="content">
       <section class="profile">
-        <img class="profile__avatar" src="./images/avatar.jpg" alt="аватар пользователя">
+        <img class="profile__avatar" src="<%=require('./images/avatar.jpg')%>" alt="аватар пользователя">
         <div class="profile__data">
           <h1 class="profile__name">Жак Ив Кусто</h1>
           <button type="button" class="button profile__edit-btn" aria-label="Редактировать"></button>
@@ -101,6 +101,5 @@
     </li>
   </template>
 
-  <script type="module" src="./index.js"></script>
 </body>
 </html>

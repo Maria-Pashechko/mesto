@@ -11,9 +11,9 @@ export default class PopupWithForm extends Popup {
   }
 
   _getInputValues() { //собирает данные всех полей формы.
-    //создаём объект, который соберет данные полей
-    const inputValues = {};
-    //идём по массиву инпутов в форме и передаём их содержимое объекту
+    const inputValues = {}; //объект, который соберет данные полей
+
+    //перебираем каждый из инпутов в форме и передаём его содержимое объекту
     this._inputs.forEach(input => {
       inputValues[input.name] = input.value;
     });
@@ -21,13 +21,12 @@ export default class PopupWithForm extends Popup {
     return inputValues;
   }
 
-  openWithData(obj){
+  openWithData(obj){ // принимает на вход объект с данными со страницы при открытии формы
     
-    this._inputs.forEach(input => {
-
-      const objValue = obj[input.name];
-      if (objValue != null){
-        input.value = objValue;
+    this._inputs.forEach(input => { //проверяем каждый инпут
+      const objValue = obj[input.name]; // определяем совпадающие значения атрибутов name инпута и объекта
+      if (objValue != null){ // при условии, что такие данные имеются,        
+        input.value = objValue; //передаёт их в поля формы
       }
     });
 

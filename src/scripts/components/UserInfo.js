@@ -10,7 +10,7 @@ export default class UserInfo {
     this._professionFromPage.textContent = dataUserInfo.profession;
   }
 
-  // объект с данными полей страницы
+  // получение объекта с данными полей страницы
   getUserInfo() {
     const dataPopupUserInfo = {};
     dataPopupUserInfo.name = this._nameFromPage.textContent;

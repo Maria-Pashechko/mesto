@@ -1,13 +1,14 @@
-import {initialCards, validationConfig,
+import './index.css';
+import {validationConfig, initialCards,
         popupProfileInput, buttonProfileEdit,
         profileInputName, profileInputProfession, popupAddCard, buttonAddCard,
-        popupImgOpen, imgPopup, captionImgPopup} from './scripts/utils/constants.js';
-import Card from './scripts/components/Card.js';
-import FormValidator from './scripts/components/FormValidator.js';
-import UserInfo from './scripts/components/UserInfo.js';
-import Section from './scripts/components/Section.js'
-import PopupWithImage from './scripts/components/PopupWithImage.js';
-import PopupWithForm from './scripts/components/PopupWithForm.js';
+        popupImgOpen, imgPopup, captionImgPopup} from '../scripts/utils/constants.js';
+import Card from '../scripts/components/Card.js';
+import FormValidator from '../scripts/components/FormValidator.js';
+import UserInfo from '../scripts/components/UserInfo.js';
+import Section from '../scripts/components/Section.js'
+import PopupWithImage from '../scripts/components/PopupWithImage.js';
+import PopupWithForm from '../scripts/components/PopupWithForm.js';
 
 //вызов функции валидации форм для каждой формы
 document.querySelectorAll(validationConfig.formSelector).forEach(form => {
@@ -20,7 +21,7 @@ const userProfile = new UserInfo (profileInputName, profileInputProfession);
 //попап форма данных профиля
 const popupFormProfileInput = new PopupWithForm(
   popupProfileInput,
-  userProfile.setUserInfo.bind(userProfile) //колбэк сабмита формы - функция SetUserInfo из UserInfo 
+  userProfile.setUserInfo.bind(userProfile) //колбэк сабмита формы 
 );
 popupFormProfileInput.setEventListeners();
 buttonProfileEdit.addEventListener('click', () => {
