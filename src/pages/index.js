@@ -28,13 +28,18 @@ buttonProfileEdit.addEventListener('click', () => {
   popupFormProfileInput.openWithData(userProfile.getUserInfo());
 });
 
+//функция создания карточки
+function createCard(cardItem) {
+  const card = new Card(cardItem, '.card-template_type_default', popupWithImage.open.bind(popupWithImage));  //(name, link) => popupWithImage.openPopupImg(name, link));
+  const cardElement = card.generateCard();
+  return cardElement;
+}
+
 //попап форма добавления новой карточки
 const popupFormAddCard = new PopupWithForm(
   popupAddCard,
-  (cardItem) => {
-    const card = new Card(cardItem, '.card-template_type_default', popupWithImage.open.bind(popupWithImage)); //(name, link) => popupWithImage.openPopupImg(name, link));
-    const cardElement = card.generateCard();
-    cardList.addItem(cardElement);
+  (cardElement) => {
+    cardList.addItem(createCard(cardElement));
   }
 );
 //обработчики формы новой карточки
@@ -50,11 +55,9 @@ popupWithImage.setEventListeners();
 
 const cardList = new Section({
   items: initialCards, // 6 карточек на первоначальной странице
-  renderer: (cardItem) => {
+  renderer: (cardElement) => {
     //инструкция по работе с Card 
-    const card = new Card(cardItem, '.card-template_type_default', popupWithImage.open.bind(popupWithImage)); //(name, link) => popupWithImage.openPopupImg(name, link));
-    const cardElement = card.generateCard();
-    cardList.addItem(cardElement);
+    cardList.addItem(createCard(cardElement));
   }},
   '.cards__list'
 );
