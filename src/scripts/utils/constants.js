@@ -58,3 +58,6 @@ export const buttonAddCard = document.querySelector('.profile__add-btn')
 export const popupImgOpen = document.querySelector('.popup_type_open-img');
 export const imgPopup = document.querySelector('.popup__img');
 export const captionImgPopup = document.querySelector('.popup__img-caption');
+
+//Попап подтверждения действия
+export const popupConfirm = document.querySelector('.popup_type_confirm');

@@ -1,8 +1,7 @@
-.card__caption {
+.card__like-container {
   display: flex;
+  flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
-  max-width: 246px;
-  padding: 22px 0px;
+  height: 35px;
 }

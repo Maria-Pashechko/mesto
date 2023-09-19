@@ -1,9 +1,10 @@
 class Card {
-  constructor(data, templateSelector, handleCardClick) { //popupCallback
+  constructor(data, templateSelector, handleCardClick, callbackPopupConfirm) { //popupCallback
     this._name = data.name;
     this._link = data.link;
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
+    this._callbackPopupConfirm = callbackPopupConfirm //
   }
 
    //клонирование шаблона
@@ -42,7 +43,7 @@ class Card {
   //слушатели событий
   _setEventListeners() {
     this._buttonLike.addEventListener('click', () => this._handleLikeBtn());
-    this._buttonTrash.addEventListener('click', () => this._handleTrashBtn());
+    this._buttonTrash.addEventListener('click', () => this._callbackPopupConfirm(this)); //open popup confirm for THIS card
     this._buttonImg.addEventListener('click', () => this._handleCardClick(this._name, this._link));
   }
 

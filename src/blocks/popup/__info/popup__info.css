@@ -1,11 +1,11 @@
 .popup__info {
   display: flex;
   flex-direction: column;
-  margin: 54px 0 20px;
+  margin: 20px 0 20px;
 }
 
 @media screen and (max-width: 767px) {
   .popup__info {
-    margin: 75px 0 15px;
+    margin: 40px 0 15px;
   }
 }
