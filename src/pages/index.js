@@ -2,7 +2,8 @@ import './index.css';
 import {validationConfig, initialCards,
         popupProfileInput, buttonProfileEdit,
         profileInputName, profileInputProfession, popupAddCard, buttonAddCard,
-        popupImgOpen, imgPopup, captionImgPopup, popupConfirm} from '../scripts/utils/constants.js';
+        popupImgOpen, imgPopup, captionImgPopup, popupConfirm,
+        popupUpdateAvatar, avatarBtn} from '../scripts/utils/constants.js';
 import Card from '../scripts/components/Card.js';
 import FormValidator from '../scripts/components/FormValidator.js';
 import UserInfo from '../scripts/components/UserInfo.js';
@@ -29,6 +30,21 @@ popupFormProfileInput.setEventListeners();
 buttonProfileEdit.addEventListener('click', () => {
   popupFormProfileInput.openWithData(userProfile.getUserInfo());
 });
+
+//попап форма добавления нового аватара
+const popupFormUpdateAvatar = new PopupWithForm(
+  popupUpdateAvatar,
+  (avatarImg) => { //https://otkritkis.com/wp-content/uploads/2022/06/pwwhi.jpg
+    avatarBtn.style.backgroundImage = `url(${avatarImg.link})`;
+    console.log(avatarBtn);
+  }
+);
+//обработчики формы новой карточки
+popupFormUpdateAvatar.setEventListeners();
+avatarBtn.addEventListener('click', () => {
+    popupFormUpdateAvatar.open();
+  }
+);
 
 //функция создания карточки
 function createCard(cardItem) {

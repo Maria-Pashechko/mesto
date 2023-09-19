@@ -36,6 +36,24 @@
       <p class="footer__copyright">&#169; 2023 Mesto Russia</p>
     </footer>
   </div>
+
+  <!-- попап обновления аватара -->
+  <div class="popup popup_type_avatar-update"> <!-- popup_opened -->
+    <div class="popup__container">
+      <button type="button" class="button popup__close-btn" aria-label="Закрыть"></button>
+      <form class="popup__form" method="get" name="avatar-form" novalidate>
+        <h3 class="popup__title">Обновить аватар</h3>
+        <div class="popup__info">
+          <label class="popup__label">
+            <input id="avatarlink" class="popup__input popup__input_avatar_link" type="url" name="link" placeholder="Ссылка на изображение" autocomplete="off" required>
+            <span class="popup__input-error avatarlink-error"></span>
+          </label>
+        </div>
+        <button type="submit" class="button popup__submit-btn">Сохранить</button>
+      </form>
+    </div>
+  </div>
+
   <!-- попап редактирования профля -->
   <div class="popup popup_type_profile-input"> <!-- здесь class popup_opened - управляется в js -->
     <div class="popup__container">
@@ -56,6 +74,7 @@
       </form>
     </div>
   </div>
+
   <!-- попап добавления карточки фотографии -->
   <div class="popup popup_type_card-add"> <!-- popup_opened -->
     <div class="popup__container">

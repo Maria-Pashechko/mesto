@@ -36,7 +36,7 @@ class Card {
   }
 
   //метод удаления карточки
-  _handleTrashBtn() {
+  handleTrashBtn() {
     this._card.remove();
   }
 

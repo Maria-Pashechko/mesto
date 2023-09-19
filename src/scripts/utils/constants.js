@@ -61,3 +61,7 @@ export const captionImgPopup = document.querySelector('.popup__img-caption');
 
 //Попап подтверждения действия
 export const popupConfirm = document.querySelector('.popup_type_confirm');
+
+// попап редактирования аватара
+export const popupUpdateAvatar = document.querySelector('.popup_type_avatar-update');
+export const avatarBtn = document.querySelector('.profile__avatar-btn');
