@@ -1,4 +1,4 @@
-class FormValidator {
+export default class FormValidator {
   constructor(config, formElement) {
     this._config = config;
     this._formElement = formElement;
@@ -87,5 +87,3 @@ class FormValidator {
     this._inputs.forEach(input => this._initCheckInput(input));
   }
 }
-
-export default FormValidator;

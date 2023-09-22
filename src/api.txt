@@ -1,6 +1,0 @@
-1. Загрузка информации о пользователе с сервера
-GET https://nomoreparties.co/v1/cohort-75/users/me
-При запросе не забудьте передать токен
-
-2. Загрузка карточек с сервера
-GET https://mesto.nomoreparties.co/v1/cohort-75/cards

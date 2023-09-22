@@ -1,34 +1,10 @@
-import arkhyzImage from '../../images/cards-img/arkhyz.jpg';
-import lenoblImage from '../../images/cards-img/lenobl.jpg';
-import gamsutlImage from '../../images/cards-img/gamsutl.jpg';
-import gorelyImage from '../../images/cards-img/gorely.jpg';
-
-export const initialCards = [
-  {
-    name: 'Архыз',
-    link: arkhyzImage
-  },
-  {
-    name: 'Ленинградская область',
-    link: lenoblImage
-  },
-  {
-    name: 'Село Гамсутль (республика Дагестан)',
-    link: gamsutlImage
-  },
-  {
-    name: 'Вулкан Горелый',
-    link: gorelyImage
-  },
-  {
-    name: 'Холмогорский район',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-  },
-  {
-    name: 'Байкал',
-    link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+export const optionsApi = {
+  url: 'https://mesto.nomoreparties.co/v1/cohort-75',
+  headers: {
+    'Authorization' : '585fc629-d9ef-4fc5-bd68-deb270813f1f',
+    'Content-Type': "application/json"
   }
-];
+}
 
 //константы для валидации форм
 export const validationConfig = {

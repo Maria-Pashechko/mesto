@@ -1,21 +1,29 @@
 export default class UserInfo {
-  constructor(selectorUserName, selectorUserProfession) {
-    this._nameFromPage = selectorUserName;
-    this._professionFromPage = selectorUserProfession;
+  constructor(selectorUserName, selectorUserProfession, selectorUserAvatar) {
+    this._nameFromServer = selectorUserName;
+    this._professionFromServer = selectorUserProfession;
+    this._avatarFromServer = selectorUserAvatar;
   }
 
   //метод принимат данные объекта и присваивает полям сраницы
   setUserInfo(dataUserInfo) {
-    this._nameFromPage.textContent = dataUserInfo.name;
-    this._professionFromPage.textContent = dataUserInfo.profession;
+    this._nameFromServer.textContent = dataUserInfo.name;
+    this._professionFromServer.textContent = dataUserInfo.about;
+    this._avatarFromServer.style.backgroundImage = `url(${dataUserInfo.avatar})`;
+    this._id = dataUserInfo._id;
   }
 
-  // получение объекта с данными полей страницы
+  // получение объекта с данными c полей страницы
   getUserInfo() {
     const dataPopupUserInfo = {};
-    dataPopupUserInfo.name = this._nameFromPage.textContent;
-    dataPopupUserInfo.profession = this._professionFromPage.textContent;
+    dataPopupUserInfo.name = this._nameFromServer.textContent;
+    dataPopupUserInfo.about = this._professionFromServer.textContent;
 
     return dataPopupUserInfo;
+  }
+
+  //получение id пользователя
+  getId() {
+    return this._id;
   }
 }

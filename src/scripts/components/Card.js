@@ -1,10 +1,12 @@
-class Card {
-  constructor(data, templateSelector, handleCardClick, callbackPopupConfirm) { //popupCallback
-    this._name = data.name;
-    this._link = data.link;
+export default class Card {
+  constructor(data, templateSelector, handleCardClick, callbackPopupConfirm, callbackLike, callbackDisLike) { //popupCallback
+    this._data = data;
     this._templateSelector = templateSelector;
     this._handleCardClick = handleCardClick;
-    this._callbackPopupConfirm = callbackPopupConfirm //
+    this._callbackLike = callbackLike;
+    this._callbackDisLike = callbackDisLike;
+    
+    this._callbackPopupConfirm = callbackPopupConfirm;
   }
 
    //клонирование шаблона
@@ -15,45 +17,78 @@ class Card {
   }
   
   //подготовка карточки к созданию
-  _prepareCard() {
+  _prepareCard(my_id) {
     this._card = this._getTemplate();
-    this._cardImg = this._card.querySelector('.card__img');
+    const cardImg = this._card.querySelector('.card__img');
 
     //заполняем клон шаблона содержимым
-    this._cardImg.src = this._link;
-    this._cardImg.alt = this._name;
-    this._card.querySelector('.card__text').textContent = this._name;
+    cardImg.src = this._data.link;
+    cardImg.alt = this._data.name;
+    this._card.querySelector('.card__text').textContent = this._data.name;
 
-    //разметка кнопок
+    //разметка кнопок и счётчика
     this._buttonLike = this._card.querySelector('.card__like-btn');
+    this._counter = this._card.querySelector('.card__like-counter');
+    this._counter.textContent = this._data.likes.length;
+    //проверка что я уже ставила лайк этой карточке ранее:
+    //среди лайков карточки ищу лайк с моим _id
+    const findMyId = this._data.likes.find((element) => element._id === my_id); //находит объект с моим id {..,_id,..} или возвращает undefined
+    if (findMyId != undefined) { // если есть лайк
+      this._buttonLike.classList.add('card__like-btn_active'); //сердечко закрасим
+    }
+
+    //Если карточка не моя - прячем корзину
     this._buttonTrash = this._card.querySelector('.card__trash-btn');
+    if (this._data.owner._id != my_id) {
+      this._buttonTrash.style.display = 'none';
+    }
+
     this._buttonImg = this._card.querySelector('.card__img-btn');
   }
 
   // метод переключения лайка в активное и неактивное состояние
-  _handleLikeBtn() {
+  _toggleLikeBtn() {
     this._buttonLike.classList.toggle('card__like-btn_active');
   }
 
-  //метод удаления карточки
-  handleTrashBtn() {
+  //клик по лайку
+  _clickLike() {
+    if (this._buttonLike.classList.contains('card__like-btn_active')) { //если лайкнут
+      //колбэк апи дизлайк
+      this._callbackDisLike(this._data._id)
+        .then((response) => {
+          this._toggleLikeBtn();
+          this._data = response;
+          this._counter.textContent = this._data.likes.length;
+        })
+    } else {
+      //колбэк апи лайк
+      this._callbackLike(this._data._id)
+        .then((response) => {
+          this._toggleLikeBtn();
+          this._data = response;
+          this._counter.textContent = this._data.likes.length;
+        })
+    }
+  }
+
+   //метод удаления карточки со страницы
+   handleTrashBtn() {
     this._card.remove();
   }
 
   //слушатели событий
   _setEventListeners() {
-    this._buttonLike.addEventListener('click', () => this._handleLikeBtn());
+    this._buttonLike.addEventListener('click', () => this._clickLike());
     this._buttonTrash.addEventListener('click', () => this._callbackPopupConfirm(this)); //open popup confirm for THIS card
-    this._buttonImg.addEventListener('click', () => this._handleCardClick(this._name, this._link));
+    this._buttonImg.addEventListener('click', () => this._handleCardClick(this._data.name, this._data.link));
   }
 
   //метод (публичный) возвращает элемент карточки
-  generateCard() {
-    this._prepareCard();
+  generateCard(my_id) {
+    this._prepareCard(my_id);
     this._setEventListeners();
     
     return this._card;
   }
 }
-
-export default Card;
