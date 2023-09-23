@@ -4,21 +4,23 @@ export default class Api {
     this._headers = headers;
   }
 
+  _then(response) {
+    if(response.ok) {
+      return response.json(); 
+    }
+
+    throw new Error (`Что-то пошло не туда... ${response.status}`)
+  }
+
   //загрузка данных пользователя с сервера
   getUserInformation() {
     return fetch(`${this._url}/users/me`, {
       method: 'GET',
       headers: this._headers
     })
-    .then((response) => {
-      if(response.ok) {
-        return response.json(); 
-      }
-
-      throw new Error ('Что-то не работает...')
-    })
+    .then((response) => this._then(response))
     .catch((error) => {
-      console.log(error)
+      throw(error)
     })
   }
 
@@ -32,15 +34,8 @@ export default class Api {
         about: updateDataUser.about
       })    
     })
-    .then((response) => {
-      if(response.ok) {
-        return response.json(); 
-      }
-
-      throw new Error ('Что-то пошло не туда...')
-    })
+    .then((response) => this._then(response))
     .catch((error) => {
-      //можно провести логирование 
       throw(error)
     })
   }
@@ -54,15 +49,8 @@ export default class Api {
         avatar: avatar.link
       })    
     })
-    .then((response) => {
-      if(response.ok) {
-        return response.json(); 
-      }
-
-      throw new Error ('Что-то не то происходит...')
-    })
+    .then((response) => this._then(response))
     .catch((error) => {
-      //можно провести логирование 
       throw(error)
     })
   }
@@ -73,15 +61,9 @@ export default class Api {
       method: 'GET',
       headers: this._headers
     })
-    .then((response) => {
-      if(response.ok) {
-        return response.json(); 
-      }
-
-      throw new Error (`Произошла ошибка: ${response.status}`)//класс Error существует в браузере по уолчанию
-    })
+    .then((response) => this._then(response))
     .catch((error) => {
-      console.log(error)
+      throw(error)
     })
   }
 
@@ -92,15 +74,9 @@ export default class Api {
       headers: this._headers,
       body: JSON.stringify(dataCard)
     })
-    .then((response) => {
-      if(response.ok) {
-        return response.json(); 
-      }
-
-      throw new Error (`Что-то бывает и не получается, сейчас это проблемка ${response.status}`)//класс Error существует в браузере по уолчанию
-    })
+    .then((response) => this._then(response))
     .catch((error) => {
-      console.log(error)
+      throw(error)
     })
   }
 
@@ -110,15 +86,9 @@ export default class Api {
       method: 'DELETE',
       headers: this._headers
     })
-    .then((response) => {
-      if(response.ok) {
-        return response.json(); 
-      }
-
-      throw new Error (`Хм.. не удаляется.. ошибка ${response.status}`)
-    })
+    .then((response) => this._then(response))
     .catch((error) => {
-      console.log(error)
+      throw(error)
     })
   }
 
@@ -128,15 +98,9 @@ export default class Api {
       method: 'PUT',
       headers: this._headers
     })
-    .then((response) => {
-      if(response.ok) {
-        return response.json(); 
-      }
-
-      throw new Error (`Лайк не случился. Ошибка ${response.status}`)
-    })
+    .then((response) => this._then(response))
     .catch((error) => {
-      console.log(error)
+      throw(error)
     })
   }
 
@@ -146,15 +110,9 @@ export default class Api {
       method: 'DELETE',
       headers: this._headers
     })
-    .then((response) => {
-      if(response.ok) {
-        return response.json(); 
-      }
-
-      throw new Error (`не удаляется лайк, "потому что есть 'ошибка' у тебя:" ${response.status}`)
-    })
+    .then((response) => this._then(response))
     .catch((error) => {
-      console.log(error)
+      throw(error)
     })
   }
 }

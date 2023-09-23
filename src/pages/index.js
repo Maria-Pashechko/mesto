@@ -14,18 +14,6 @@ import PopupWithForm from '../scripts/components/PopupWithForm.js';
 import PopupConfirm from '../scripts/components/PopupConfirm';
 import Api from '../scripts/components/Api.js'
 
-
-// API
-const api = new Api(optionsApi);
-
-//получение объекта с данными
-const userProfile = new UserInfo (profileInputName, profileInputProfession, avatarBtn);
-await api.getUserInformation() //await заставит интерпретатор дождаться выполнения promise
-  .then((userInfo) => {
-    userProfile.setUserInfo(userInfo);
-    console.log(userInfo);
-  })
-
 //функция создания карточки
 function createCard(cardItem) {
   const card = new Card(cardItem, '.card-template_type_default',
@@ -37,6 +25,12 @@ function createCard(cardItem) {
   return cardElement;
 }
 
+// API
+const api = new Api(optionsApi);
+
+//получение объекта с данными
+const userProfile = new UserInfo (profileInputName, profileInputProfession, avatarBtn);
+
 //добавление карточек с сервера на страницу
 const cardList = new Section(
   (item) => {
@@ -45,10 +39,16 @@ const cardList = new Section(
   },
   '.cards__list'
 );
-api.getInitialCards()
-  .then((arrayItems) => {
-    cardList.renderItems(arrayItems)
-  });
+
+Promise.all([api.getUserInformation(), api.getInitialCards()])
+.then(([userInfo, arrayItems]) => {
+  userProfile.setUserInfo(userInfo);
+  cardList.renderItems(arrayItems);
+})
+.catch((error) => {
+  //Тут обрабатываем ошибку
+  console.log(error)
+})
 
 //попап форма добавления нового аватара
 const popupFormUpdateAvatar = new PopupWithForm(
@@ -92,10 +92,22 @@ buttonAddCard.addEventListener('click', () => {
 const popupWithImage = new PopupWithImage(popupImgOpen, imgPopup, captionImgPopup);
 popupWithImage.setEventListeners();
 
+const deleteCardCallback = (card) => {
+  api.deleteCard(card._data._id)
+  .then(() => {
+    card.handleTrashBtn();
+    popupConfirmDeleteCard.close();
+  })
+  .catch((error) => {
+    //Тут обрабатываем ошибку
+    console.log(error)
+  })
+}
+
 //попап подтверждения удаления карточки
 const popupConfirmDeleteCard = new PopupConfirm (
   popupConfirm,
-  api.deleteCard.bind(api)
+  deleteCardCallback
 );
 popupConfirmDeleteCard.setEventListeners();
 

@@ -2,15 +2,17 @@ import Popup from "./Popup.js";
 import {validationConfig} from '../utils/constants.js';
 
 export default class PopupWithForm extends Popup {
-  constructor(selector, callbackSubmitForm, callbackDOM) {
+  constructor(selector, callbackSubmitForm, callbackDOM) { //textButton
     super(selector);
     
     this._submitForm = callbackSubmitForm;
     this._formElement = this._popupSelector.querySelector(validationConfig.formSelector);
     this._inputs = Array.from(this._formElement.querySelectorAll(validationConfig.inputSelector));
     this._submitBtn = this._popupSelector.querySelector(validationConfig.submitButtonSelector);
-
+    // this._spanSubmitBtn = this._popupSelector.querySelector('.span__submit-btn');
     this._callbackDOM = callbackDOM;
+
+    this._btnOriginContent = this._submitBtn.textContent;
   }
 
   //собирает данные всех полей формы
@@ -44,27 +46,36 @@ export default class PopupWithForm extends Popup {
     this._formElement.reset();
   }
 
+  // устанавливает текст (входной параметр) кнопки, сбрасывает до исходного, если текст не задан
+  _setButtonText(text) {
+    if(text == undefined) {
+      text = this._btnOriginContent;
+    }
+
+    this._submitBtn.textContent = text;
+  }
+
   setEventListeners() {
     super.setEventListeners();
 
     this._formElement.addEventListener('submit', (evt) => {
       evt.preventDefault();
-      //сохраняем текущее значение текста кнопки
-      const x = this._submitBtn.textContent;
+
       //вкл UX отображения процесса обмена данными с сервером (loading)
-      this._submitBtn.textContent = "Сохранение...";     
+      this._setButtonText("Сохранение...");
 
       this._submitForm(this._getInputValues())
       .then((response) => {
+
         this._callbackDOM(response);
         //откл loading
-        this._submitBtn.textContent = x;
+        this._setButtonText();
         this.close();
       })
       .catch((error) => {
         console.log(error)
-        //отключить loading
-        this._submitBtn.textContent = x;
+        //откл loading
+        this._setButtonText();
       }) 
     });
   }
