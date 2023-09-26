@@ -3,7 +3,7 @@
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  background-color: rgba(0, 0, 0);
+  background-color: rgba(0, 0, 0, 1);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
@@ -16,7 +16,7 @@
   }
 }
 
-.profile__avatar-btn:hover::after {
+.profile__avatar-btn::after {
   content: "";
   background-image: url(../../../images/edit-profile.svg);
   background-position: center;
@@ -28,6 +28,16 @@
   bottom: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, .8);
-  transition: opacity 0.8s ease 0.8s;
+  background-color: rgba(0, 0, 0);
+  opacity: 0; /*непрозрачный фон*/
+  visibility: hidden; /*псевдоэлемент скрыт*/
+  /*задаем изменения прозрачности и видимости*/
+  transition: opacity 0.2s ease 0.2s, visibility 0.2s ease 0.2s;
+}
+
+/*что хотим видеть при наведении курсора*/
+.profile__avatar-btn:hover::after {
+ /*псевдоэлемент станвиться практически непрозрачным и видимым*/
+  opacity: .8;
+  visibility: visible;
 }

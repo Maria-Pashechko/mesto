@@ -2,14 +2,14 @@ import Popup from "./Popup.js";
 import {validationConfig} from '../utils/constants.js';
 
 export default class PopupWithForm extends Popup {
-  constructor(selector, callbackSubmitForm, callbackDOM) { //textButton
+  constructor(selector, callbackSubmitForm, callbackDOM) {
     super(selector);
     
     this._submitForm = callbackSubmitForm;
     this._formElement = this._popupSelector.querySelector(validationConfig.formSelector);
     this._inputs = Array.from(this._formElement.querySelectorAll(validationConfig.inputSelector));
     this._submitBtn = this._popupSelector.querySelector(validationConfig.submitButtonSelector);
-    // this._spanSubmitBtn = this._popupSelector.querySelector('.span__submit-btn');
+   
     this._callbackDOM = callbackDOM;
 
     this._btnOriginContent = this._submitBtn.textContent;
